@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,13 +8,14 @@ IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField] private Canvas canvas;
     public WindowBehaviour parentWindow;
+    [SerializeField] private TMP_Text date;
 
     
-
     private void Start()
     {
         if(parentWindow == null) Destroy(this);
         parentWindow.SetIcon(this);
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)
