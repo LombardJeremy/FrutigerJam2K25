@@ -5,6 +5,9 @@ using UnityEngine;
 public class Thrower : MonoBehaviour
 {
 
+    [Header("Params")]
+    [SerializeField] InteractibleManager intManager;
+
     [Header("Params Thrower")]
     [SerializeField] Rigidbody2D objectToThrow;
     [SerializeField] float speedRotation = 100;
@@ -27,6 +30,7 @@ public class Thrower : MonoBehaviour
 
     void Update()
     {
+        HandleInput();
 
         if (repositioning) return;
 
@@ -47,7 +51,6 @@ public class Thrower : MonoBehaviour
             }
             else
             {
-                print(Vector2.Distance(objectToThrow.transform.position, transform.position));
                 if (Vector2.Distance(objectToThrow.transform.position, transform.position) < posXbase)
                 {
                     objectReturn = false;
@@ -57,6 +60,17 @@ public class Thrower : MonoBehaviour
                     objectToThrow.transform.DOLocalMoveX(posXbase, 0.3f).SetEase(Ease.InOutCirc).OnComplete( () => { hasObject = true; repositioning = false; });
                 }
             }
+        }
+    }
+
+    private void HandleInput()
+    {
+        if (intManager == null) return;
+        if (hasObject) return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            intManager.IsCollidingWithElements(objectToThrow.position);
         }
     }
 
