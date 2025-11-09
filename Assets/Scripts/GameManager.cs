@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
         currentGameState = newState;
         OnGameStateChanged?.Invoke(currentGameState);
     }
+
+    public void ChangeToParameter()
+    {
+        ChangeState(GameState.Parameter);
+    }
 }
 
 public enum GameState

@@ -795,6 +795,7 @@ GameObject:
   - component: {fileID: 3862632698319555379}
   - component: {fileID: 2231871740805593870}
   - component: {fileID: 1519185536954832496}
+  - component: {fileID: 8495771755031866995}
   m_Layer: 5
   m_Name: SettingsCanvas
   m_TagString: Untagged
@@ -902,6 +903,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carousel: {fileID: 6845000857488948651}
   categories: {fileID: 8273384205051639729}
+  canvasGroup: {fileID: 0}
+--- !u!225 &8495771755031866995
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672777545436735492}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2788853308133347469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: dbd5728fdbb925b45b71d9ea07b27184, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1106,7 +1120,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 160ad6235367a9f42bbf514f5336523e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 35f46fbc273af5a4a92e4ffa041fda63, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

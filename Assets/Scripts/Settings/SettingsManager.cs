@@ -13,10 +13,31 @@ public class SettingsManager : MonoBehaviour
     bool canChange = true;
 
     float posXCategories = 0f;
+    
+    public CanvasGroup canvasGroup;
 
     void Start()
     {
         posXCategories = categories.transform.localPosition.x;
+        
+        GameManager.instance.OnGameStateChanged.AddListener(OnGameStateChanged);
+    }
+    
+    private void OnGameStateChanged(GameState newState)
+    {
+        if (newState == GameState.Parameter)
+        {
+            canvasGroup.DOFade(1, 1);
+            canvasGroup.blocksRaycasts = true;
+            canvasGroup.interactable = true;
+        }
+
+        if (newState == GameState.MainOS)
+        {
+            canvasGroup.DOFade(0, 1);
+            canvasGroup.blocksRaycasts = false;
+            canvasGroup.interactable = false;
+        }
     }
 
     void Update()
