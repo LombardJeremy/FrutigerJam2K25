@@ -1,17 +1,23 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class WindowBehaviour : MonoBehaviour,
     IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    [SerializeField] private Canvas canvas;
+    [SerializeField] public Canvas canvas;
     [SerializeField] public RectTransform mainParentTransform;
     private Vector2 offset;
     public Vector2 lastPosBeforeClosed;
     public bool isWindowOpen = true;
     
     public TaskBarIconBehaviour taskBarIcon;
-    
+
+    private void Start()
+    {
+        canvas = transform.GetComponentInParent<Canvas>();
+    }
+
     public void MinimizeWindow()
     {
         if (isWindowOpen)

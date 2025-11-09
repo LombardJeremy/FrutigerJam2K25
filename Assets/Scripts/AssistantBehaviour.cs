@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
@@ -8,13 +9,32 @@ public class AssistantBehaviour : MonoBehaviour
 {
     [SerializeField] private TMP_Text speechBoxText;
     [SerializeField] private RectTransform speechBox;
+    public AssistantState currentAssistantState;
+    
+    public Action<AssistantState> OnStateChange;
+    
+    public static AssistantBehaviour instance;
     
     private Coroutine typingCoroutine;
     void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
         //Play StartAnimation
-        SetAndPrintText("HHHHHHHHHHHHHWOWOWOOWOWOOWOWOOWOWO");
-        MoveTo(new Vector3(0,0,0));
+        currentAssistantState = AssistantState.Start;
+    }
+
+    public void ChangeState(AssistantState newState)
+    {
+        currentAssistantState = newState;
+        OnStateChange?.Invoke(currentAssistantState);
     }
 
     public void MoveTo(Vector3 pos)
@@ -45,5 +65,17 @@ public class AssistantBehaviour : MonoBehaviour
             speechBoxText.maxVisibleCharacters = i;
             yield return new WaitForSeconds(.05f);
         }
+    }
+
+    public enum AssistantState
+    {
+        Start,
+        Idle1,
+        Idle2,
+        Speakin,
+        Running,
+        Throw,
+        WaitingForThrow,
+        End
     }
 }

@@ -13,8 +13,8 @@ public class SoundSliderBehaviour : MonoBehaviour
         _slider = GetComponent<Slider>();
     }
 
-    private void Update()
+    public void ChangeValue()
     {
-        mainMixer.SetFloat("MainVolume", Mathf.Lerp(-80,0,_slider.value));
+        mainMixer.SetFloat("MainVolume", Mathf.Lerp(-60,0,_slider.value));
     }
 }
