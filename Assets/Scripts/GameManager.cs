@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameState currentGameState;
     public UnityEvent<GameState> OnGameStateChanged = new UnityEvent<GameState>();
+
+    public GameObject minesweeper;
     
     private void Awake()
     {
