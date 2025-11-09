@@ -12,8 +12,6 @@ public class WindowBehaviour : MonoBehaviour,
     
     public TaskBarIconBehaviour taskBarIcon;
     
-    public int id;
-
     public void MinimizeWindow()
     {
         if (isWindowOpen)
