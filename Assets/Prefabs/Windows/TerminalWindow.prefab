@@ -626,8 +626,8 @@ RectTransform:
   m_GameObject: {fileID: 3266201999535619840}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41669992, y: 0.41669992, z: 0.41669992}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2303513684965188773}
   - {fileID: 3747382454596260179}
@@ -691,6 +691,7 @@ MonoBehaviour:
   icon: {fileID: -4007164682430197501, guid: 8c7478427c2cae544972dce07ea4911e, type: 3}
   nameOfWindow: Cmd
   ownBehaviour: {fileID: 3366912990757969321}
+  isFocus: 0
 --- !u!1 &3774796364526913086
 GameObject:
   m_ObjectHideFlags: 0

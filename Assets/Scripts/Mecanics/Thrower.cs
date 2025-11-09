@@ -56,7 +56,7 @@ public class Thrower : MonoBehaviour
                     objectReturn = false;
                     repositioning = true;
                     objectToThrow.linearVelocity = Vector2.zero;
-                    // Dotween pour revenir à la pos
+                    // Dotween pour revenir ï¿½ la pos
                     objectToThrow.transform.DOLocalMoveX(posXbase, 0.3f).SetEase(Ease.InOutCirc).OnComplete( () => { hasObject = true; repositioning = false; });
                 }
             }
@@ -70,7 +70,9 @@ public class Thrower : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            intManager.IsCollidingWithElements(objectToThrow.position);
+            Canvas canvas = objectToThrow.GetComponentInParent<Canvas>();
+            Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, objectToThrow.position);
+            intManager.IsCollidingWithElements(screenPos);
         }
     }
 

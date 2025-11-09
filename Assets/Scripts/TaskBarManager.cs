@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine.Serialization;
 
@@ -11,6 +12,11 @@ public class TaskBarManager : MonoBehaviour
     [SerializeField] private GameObject iconPrefab;
     public List<TaskBarIconBehaviour> taskBarIconList = new List<TaskBarIconBehaviour>();
     public Transform taskBarIconGroupParent;
+    
+    public bool _isTaskBarUnlocked = false;
+    private CanvasGroup _canvasGroup;
+
+    [SerializeField] private int countToUnlock;
     
     [SerializeField] private TMP_Text date;
     void Awake()
@@ -23,7 +29,28 @@ public class TaskBarManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        UpdateDate();
+        UpdateDate(-22);
+        _canvasGroup = GetComponent<CanvasGroup>();
+        _canvasGroup.blocksRaycasts = false;
+        _canvasGroup.interactable = false;
+    }
+
+    public void UnlockTaskBar()
+    {
+        countToUnlock--;
+        if (countToUnlock > 0)
+        {
+            //PlayAnim
+            GetComponent<RectTransform>().DOShakePosition( 1f, 4f, 15, 95f, true, true);
+        }
+        else
+        {
+            if (_isTaskBarUnlocked) return;
+            _isTaskBarUnlocked = true;
+            _canvasGroup.blocksRaycasts = true;
+            _canvasGroup.interactable = true;
+            GetComponent<RectTransform>().DOShakePosition( 2f, 20f, 40, 95f, true, true);
+        }
     }
 
     public void CreateTaskBarIcon(WindowData window)
@@ -35,13 +62,12 @@ public class TaskBarManager : MonoBehaviour
         tmpIconBehaviour.SetIconSprite();
         window.ownBehaviour.taskBarIcon =  tmpIconBehaviour;
         taskBarIconList.Add(tmpIconBehaviour);
-        Debug.Log("Instantiated TaskBarIcon");
     }
     
-    void UpdateDate()
+    void UpdateDate(int value)
     {
         DateTime now = DateTime.Now;
-        now = now.AddYears(-22);
+        now = now.AddYears(value);
         date.text = now.ToString("dd/MM/yyyy");
     }
 }

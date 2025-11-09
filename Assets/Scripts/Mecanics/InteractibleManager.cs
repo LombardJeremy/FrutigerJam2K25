@@ -8,7 +8,6 @@ public class InteractibleManager : MonoBehaviour
 
     public bool IsCollidingWithElements(Vector2 position)
     {
-
         foreach (Interactible interactible in  interactibles)
         {
             if (IsInElement(interactible, position))
@@ -17,7 +16,6 @@ public class InteractibleManager : MonoBehaviour
                 return true;
             }
         }
-
         return false;
     }
 
@@ -29,14 +27,8 @@ public class InteractibleManager : MonoBehaviour
         if (rectTransform == null) return false;
 
         Rect rect = rectTransform.rect;
-        if (rectTransform.transform.position.x + rect.width > position.x 
-            && rectTransform.transform.position.x - rect.width < position.x 
-            && rectTransform.transform.position.y + rect.height > position.y
-            && rectTransform.transform.position.y - rect.height < position.y
-            )
-            return true;
-
-        return false;
+        Canvas canvas = rectTransform.GetComponentInParent<Canvas>();
+        return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, position, canvas.worldCamera);
     }
 
 }

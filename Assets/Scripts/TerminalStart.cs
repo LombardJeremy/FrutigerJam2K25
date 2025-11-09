@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,6 +29,8 @@ public class TerminalStart : MonoBehaviour
     bool canType = true;
 
     public UnityEvent onEndTerminal = new UnityEvent();
+    
+    public CanvasGroup canvasGroup;
 
     void Start()
     {
@@ -36,7 +39,6 @@ public class TerminalStart : MonoBehaviour
         {
             StartCoroutine(AddLineWithDelay(startTexts[i], 1f * i + Random.value/2f));
         }
-
     }
 
     void Update()
@@ -106,6 +108,7 @@ public class TerminalStart : MonoBehaviour
     {
         GameObject newLine = Instantiate(prefabLine);
         newLine.transform.SetParent(lines.transform);
+        newLine.transform.localScale = Vector3.one;
         newLine.GetComponentInChildren<TextMeshProUGUI>().text = text;
 
         userLine.transform.SetAsLastSibling();
@@ -142,7 +145,6 @@ public class TerminalStart : MonoBehaviour
     void OnLastCommand()
     {
         userLine.SetActive(false);
-
         StartCoroutine(OnLastCommandCoroutine());
     }
 
@@ -159,8 +161,17 @@ public class TerminalStart : MonoBehaviour
             ReplaceLastLine(newText);
         }
         yield return new WaitForSeconds(0.3f);
-
         onEndTerminal.Invoke();
+        EndIntro();
+    }
+
+    public void EndIntro()
+    {
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
+        canvasGroup.DOFade(0, 1f);
+        GameManager.instance.ChangeState(GameState.MainOS);
+        canvasGroup.GetComponentInParent<Canvas>().enabled = false;
     }
 
 }
