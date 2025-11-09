@@ -1999,6 +1999,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   minesweeper: {fileID: 1359022694}
+  _asBomb: 0
+  _asFlintAndSteel: 0
 --- !u!1 &606571034
 GameObject:
   m_ObjectHideFlags: 0
@@ -10728,7 +10730,7 @@ CanvasGroup:
   m_GameObject: {fileID: 1895852894}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
+  m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &1895852900

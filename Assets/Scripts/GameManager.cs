@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public UnityEvent<GameState> OnGameStateChanged = new UnityEvent<GameState>();
 
     public GameObject minesweeper;
+
+    public bool _asBomb;
+    public bool _asFlintAndSteel;
     
     private void Awake()
     {
