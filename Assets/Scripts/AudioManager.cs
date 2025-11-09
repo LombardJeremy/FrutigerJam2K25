@@ -4,7 +4,6 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _mainAudioSource;
-    [SerializeField] private AudioSource _sfxAudioSource;
 
     private AudioClip _lastMusicPlayed;
     private bool _isPaused = false;
@@ -55,12 +54,5 @@ public class AudioManager : MonoBehaviour
     public void StopMusic()
     {
         _mainAudioSource.Stop();
-    }
-
-    public void PlaySound(AudioClip soundToPlay)
-    {
-        _sfxAudioSource.Stop();
-        _sfxAudioSource.clip = soundToPlay;
-        _sfxAudioSource.Play();
     }
 }

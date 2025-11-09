@@ -17,12 +17,6 @@ public class AssistantBehaviour : MonoBehaviour
         MoveTo(new Vector3(0,0,0));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //Choose a random thing to do if player don't interact with it
-    }
-
     public void MoveTo(Vector3 pos)
     {
         transform.DOMove(pos, 3f).SetEase(Ease.InOutSine);
