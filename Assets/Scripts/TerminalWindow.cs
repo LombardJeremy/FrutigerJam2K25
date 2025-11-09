@@ -33,10 +33,7 @@ public class TerminalWindow : MonoBehaviour
     void Start()
     {
 
-        for (int i = 0; commandsToSay.Count > 0; i++)
-        {
-            doneCommands.Add(false);
-        }
+        doneCommands = new List<bool>(commandsToSay.Count);
 
         for (int i = 0; i < startTexts.Count; i++)
         {
