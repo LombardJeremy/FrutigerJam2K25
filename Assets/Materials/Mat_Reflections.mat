@@ -40,12 +40,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_ab5cc9647d3c42b1bcb40b4d5172b206_Texture_1_Texture2D:
+    - _SampleTexture2D_1e332ea05bce428ca325efe6cbef0250_Texture_1_Texture2D:
         m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_ab5cc9647d3c42b1bcb40b4d5172b206_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 1bc310eb6e28fd34fa81b47f2f7fc9d7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_ad93060d3dab4da8840307e5772958ec_Texture_1_Texture2D:
         m_Texture: {fileID: 8400000, guid: 35339d8192811864ebd22efdbbca8d1e, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_dec3cd6e0b314eb6b460525f31dc9044_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 1bc310eb6e28fd34fa81b47f2f7fc9d7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -68,6 +76,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ReflectionColors: {r: 1, g: 0.5358717, b: 0, a: 0}
     - _ReflectionOffset: {r: 0, g: 0.64, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
