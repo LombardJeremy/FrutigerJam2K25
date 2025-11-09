@@ -17,6 +17,8 @@ public class AssistantBehaviour : MonoBehaviour
 
     public Animator anim;
 
+    public Transform minny;
+
     private Coroutine typingCoroutine;
     void Start()
     {
@@ -31,6 +33,13 @@ public class AssistantBehaviour : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         //Play StartAnimation
         currentAssistantState = AssistantState.Idle;
+        
+    }
+
+    public void LookAt(Vector3 pos)
+    {
+        minny.LookAt(pos);
+        minny.rotation = Quaternion.Euler(0, minny.rotation.eulerAngles.y, 0);
     }
 
 
