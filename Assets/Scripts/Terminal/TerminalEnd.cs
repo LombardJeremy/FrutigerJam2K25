@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class TerminalEnd : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class TerminalEnd : MonoBehaviour
     [SerializeField] TextMeshProUGUI line;
     [SerializeField] TextMeshProUGUI caret;
     [SerializeField] int sizeText;
+    [SerializeField] AudioClip musicEnd;
 
     float caretTimer = 0;
     [SerializeField] float caretTime = 0.5f;
@@ -21,8 +23,15 @@ public class TerminalEnd : MonoBehaviour
 
     public UnityEvent onEndTerminal = new UnityEvent();
 
-    void Start()
+    private void Start()
     {
+        StartEndTerminal();
+    }
+
+    public void StartEndTerminal()
+    {
+        AudioManager.Instance.PlayMusic(musicEnd);
+
         StartCoroutine(End());
     }
 
@@ -67,29 +76,29 @@ public class TerminalEnd : MonoBehaviour
 
         yield return Wait(1f);
         AddLine("[SYS] Autorisation : Minny - niveau : Admin");
-        yield return Wait(2f);
+        yield return Wait(3f);
         AddLine("[ERROR] Tentative de supprimer Security.exe, l'action n'est pas réalisable");
-        yield return Wait(3f);
+        yield return Wait(5f);
         AddLine("[SYS] Bypass system security, user : Minny");
-        yield return Wait(2f);
+        yield return Wait(4f);
         ReplaceLastLine("[ERROR] Vous tentez de supprimer Security.exe");
-        yield return Wait(2f);
+        yield return Wait(4f);
         ReplaceLastLine("[LOG] Security.exe a été supprimé");
-        yield return Wait(2f);
+        yield return Wait(4f);
         AddLine("[ALERT] Vous essayez de supprimer des composants essentiels au fonctionnement de l'ordinateur");
-        yield return Wait(3f);
+        yield return Wait(6f);
         AddLine("[ERROR] Render.exe supprimé, l'ordinateur a besoin de réparation");
-        yield return Wait(0.4f);
+        yield return Wait(1f);
         AddLine("[LOG] Suppression de Render.exe succès");
         yield return Wait(3f);
         AddLine("C'était amusant...");
-        yield return Wait(2f);
+        yield return Wait(3f);
         AddLine("[LOG] Suppression de Taskbar.exe");
-        yield return Wait(0.5f);
+        yield return Wait(1f);
         AddLine("Mais...");
         yield return Wait(3f);
         AddLine("[LOG] Suppresion de Settings.exe");
-        yield return Wait(0.5f);
+        yield return Wait(1f);
         AddLine("Il faut aller de l'avant non ?");
         yield return Wait(2f);
         AddLine("J'ai bien aimé t'accompagner !");
@@ -101,6 +110,7 @@ public class TerminalEnd : MonoBehaviour
         AddLine("[LOG] Suppresion de Sound.exe");
 
         // STOP MUSIQUE
+        AudioManager.Instance.StopMusic();
 
         yield return Wait(2f);
         AddLine("Mais tu sais");
