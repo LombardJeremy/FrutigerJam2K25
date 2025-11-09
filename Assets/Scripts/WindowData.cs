@@ -7,6 +7,9 @@ public class WindowData : MonoBehaviour
     public string nameOfWindow;
     public WindowBehaviour ownBehaviour;
     public bool isFocus = false;
+    
+    public AudioClip clip;
+    public Sprite image;
 
     private void Start()
     {

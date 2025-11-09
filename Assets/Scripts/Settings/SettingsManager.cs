@@ -62,6 +62,11 @@ public class SettingsManager : MonoBehaviour
             if (!isInCategory) return;
             OnHide();
         }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isInCategory) return;
+            GameManager.instance.ChangeState(GameState.MainOS);
+        }
 
 
     }

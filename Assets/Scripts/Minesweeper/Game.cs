@@ -272,6 +272,8 @@ public class Game : MonoBehaviour
                 }
             }
         }
+        
+        GameManager.instance.ChangeState(GameState.EndOS);
     }
 
     private bool TryGetCellAtMousePosition(out Cell cell)

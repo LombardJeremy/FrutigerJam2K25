@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
  
 public class AudioVisualizer : MonoBehaviour
@@ -20,8 +22,30 @@ public class AudioVisualizer : MonoBehaviour
     {
         // Must be a power of 2 number, between 64 and 8192
         spectrumData = new float[4096];
+        audioSource = AudioManager.Instance._mainAudioSource;
+        AudioManager.Instance.PlayMusic(GetComponentInParent<WindowData>().clip);
     }
- 
+
+    public void PlayMusic()
+    {
+        AudioManager.Instance.PlayLastMusic();
+    }
+
+    public void PauseMusic()
+    {
+        AudioManager.Instance.PauseMusic();
+    }
+
+    public void RestartMusic()
+    {
+        AudioManager.Instance.RestartMusic();
+    }
+
+    private void OnDisable()
+    {
+        AudioManager.Instance.StopMusic();
+    }
+
     void Update()
     {
         audioSource.GetSpectrumData(spectrumData, 0, fftWindow);

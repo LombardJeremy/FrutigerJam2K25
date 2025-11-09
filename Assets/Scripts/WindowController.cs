@@ -3,9 +3,14 @@ using UnityEngine.UI;
 
 public class WindowController : MonoBehaviour
 {
-    [SerializeField] private WindowData _data;
+    [SerializeField] public WindowData _data;
     [SerializeField] int horizontalElements = 1;
     [SerializeField] int verticalElements = 1;
+
+    public GameObject windowExplorerMusicPrefab;
+    public GameObject windowExplorerImagePrefab;
+    public GameObject musicReader;
+    public GameObject imageReader;
 
     int numElements = 1;
 
@@ -17,15 +22,14 @@ public class WindowController : MonoBehaviour
 
     void Start()
     {
+        _data = GetComponentInParent<WindowData>();
         numElements = transform.childCount;
         transform.GetChild(indexHorizontal + indexVertical).GetComponent<Image>().color = Color.red;
     }
 
     void Update()
     {
-
         HandleInputs();
-
     }
 
     void HandleInputs()
