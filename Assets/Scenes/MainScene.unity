@@ -1630,6 +1630,7 @@ MonoBehaviour:
   icon: {fileID: -4007164682430197501, guid: 8c7478427c2cae544972dce07ea4911e, type: 3}
   nameOfWindow: Feur
   ownBehaviour: {fileID: 50489826}
+  isFocus: 1
 --- !u!1 &464727602
 GameObject:
   m_ObjectHideFlags: 0
@@ -4856,6 +4857,7 @@ GameObject:
   - component: {fileID: 1278604816}
   - component: {fileID: 1278604815}
   - component: {fileID: 1278604814}
+  - component: {fileID: 1278604817}
   m_Layer: 0
   m_Name: MainStock
   m_TagString: Untagged
@@ -4951,6 +4953,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278604812}
   m_CullTransparentMesh: 1
+--- !u!114 &1278604817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278604812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc9d7e67de99664bb6e62a2266da7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 412657361}
+  horizontalElements: 5
+  verticalElements: 2
 --- !u!1 &1328951217
 GameObject:
   m_ObjectHideFlags: 0
@@ -6670,6 +6687,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bc97814af121e4247ae39c694ddab995, type: 3}
   nameOfWindow: MusicPlayer
   ownBehaviour: {fileID: 1785145969}
+  isFocus: 0
 --- !u!1 &1746261686
 GameObject:
   m_ObjectHideFlags: 0
@@ -7986,6 +8004,7 @@ MonoBehaviour:
   icon: {fileID: -6985217527476431760, guid: 582f7d0c19467ee459a863e0f700022a, type: 3}
   nameOfWindow: ImagePlayer
   ownBehaviour: {fileID: 1694948998}
+  isFocus: 0
 --- !u!114 &1926089543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8079,6 +8098,7 @@ MonoBehaviour:
   icon: {fileID: -6985217527476431760, guid: 582f7d0c19467ee459a863e0f700022a, type: 3}
   nameOfWindow: ImagePlayer
   ownBehaviour: {fileID: 61863080}
+  isFocus: 0
 --- !u!114 &1933789066
 MonoBehaviour:
   m_ObjectHideFlags: 0
