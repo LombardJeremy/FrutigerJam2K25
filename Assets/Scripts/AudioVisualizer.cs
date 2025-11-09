@@ -18,7 +18,7 @@ public class AudioVisualizer : MonoBehaviour
     [Header("State")]
     public float[] spectrumData;
  
-    void Awake()
+    public void Initialize()
     {
         // Must be a power of 2 number, between 64 and 8192
         spectrumData = new float[4096];

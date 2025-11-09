@@ -34,11 +34,13 @@ public class FileExplorerIconBehaviour : MonoBehaviour
             GameObject child = Instantiate(_windowController.musicReader, _windowController._data.ownBehaviour.canvas.transform);
             if (audioClip != null)
                 child.GetComponent<WindowData>().clip = audioClip;
+            child.GetComponentInChildren<AudioVisualizer>().Initialize();
         } else if (typeOfFile == TypeOfFile.Image)
         {
             GameObject child = Instantiate(_windowController.imageReader, _windowController._data.ownBehaviour.canvas.transform);
             if (sprite != null)
                 child.GetComponent<WindowData>().image = sprite;
+            child.GetComponentInChildren<ImagePlayerBehaviour>().SetSprite();
         }
     }
 }

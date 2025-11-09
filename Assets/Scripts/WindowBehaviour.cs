@@ -44,6 +44,7 @@ public class WindowBehaviour : MonoBehaviour,
     
     public void OnBeginDrag(PointerEventData eventData)
     {
+        mainParentTransform.GetComponent<WindowData>().IsFocusOn();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
             eventData.position,
