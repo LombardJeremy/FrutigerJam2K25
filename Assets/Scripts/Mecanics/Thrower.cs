@@ -1,5 +1,4 @@
 using DG.Tweening;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Thrower : MonoBehaviour
@@ -72,7 +71,8 @@ public class Thrower : MonoBehaviour
         {
             Canvas canvas = objectToThrow.GetComponentInParent<Canvas>();
             Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, objectToThrow.position);
-            intManager.IsCollidingWithElements(screenPos);
+            bool result = intManager.IsCollidingWithElements(screenPos);
+            Debug.Log(result);
         }
     }
 

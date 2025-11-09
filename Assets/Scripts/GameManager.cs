@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
     public TerminalStart terminalStart;
     public GameState currentGameState;
     public UnityEvent<GameState> OnGameStateChanged = new UnityEvent<GameState>();
+
+    public GameObject minesweeper;
+
+    public bool _asBomb;
+    public bool _asFlintAndSteel;
     
     private void Awake()
     {

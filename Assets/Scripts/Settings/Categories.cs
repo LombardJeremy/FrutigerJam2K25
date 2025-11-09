@@ -10,7 +10,7 @@ public class Categories : MonoBehaviour
 
     int sec = 0;
 
-    // 4 Mise à jour
+    // 4 Mise ï¿½ jour
     // 3 background
     // 2 Son
     // 1 Date 
@@ -30,9 +30,14 @@ public class Categories : MonoBehaviour
                 break;
             case 2:
                 SoundInput(); break;
+            case 4:
+                UpdateForOS(); break;
         }
+    }
 
-
+    void UpdateForOS()
+    {
+        GameManager.instance.minesweeper.SetActive(true);
     }
 
     void SoundInput()
