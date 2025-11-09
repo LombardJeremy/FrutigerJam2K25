@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource _mainAudioSource;
+    [SerializeField] public AudioSource _mainAudioSource;
 
     private AudioClip _lastMusicPlayed;
     private bool _isPaused = false;

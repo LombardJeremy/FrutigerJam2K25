@@ -35,7 +35,6 @@ public class DoubleClick : MonoBehaviour, IPointerClickHandler
     public void OnDoubleClick()
     {
         // Animation dotween ?
-
         onDoubleClick?.Invoke();
     }
 }

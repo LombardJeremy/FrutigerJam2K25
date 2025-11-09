@@ -1486,6 +1486,7 @@ GameObject:
   - component: {fileID: 942412294845127667}
   - component: {fileID: 2434118493719816415}
   - component: {fileID: 3616089477834195021}
+  - component: {fileID: 1615178118969558183}
   m_Layer: 0
   m_Name: MainStock
   m_TagString: Untagged
@@ -1581,6 +1582,21 @@ MonoBehaviour:
   m_Spacing: {x: 43.6, y: 50}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1615178118969558183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449073987860095991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc9d7e67de99664bb6e62a2266da7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 0}
+  horizontalElements: 5
+  verticalElements: 2
 --- !u!1 &8897178856660468665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1611,6 @@ GameObject:
   - component: {fileID: 8603953413357406351}
   - component: {fileID: 8938057111550416940}
   - component: {fileID: 46897052303496693}
-  - component: {fileID: 8207866923511601619}
   m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
@@ -1677,7 +1692,7 @@ MonoBehaviour:
   icon: {fileID: -4007164682430197501, guid: 8c7478427c2cae544972dce07ea4911e, type: 3}
   nameOfWindow: Feur
   ownBehaviour: {fileID: 227356382646700519}
-  isFocus: 0
+  isFocus: 1
 --- !u!82 &8938057111550416940
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1788,18 +1803,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainSfxSource: {fileID: 8938057111550416940}
---- !u!114 &8207866923511601619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8897178856660468665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bc9d7e67de99664bb6e62a2266da7ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 8603953413357406351}
-  horizontalElements: 4
-  verticalElements: 2
