@@ -33,7 +33,10 @@ public class TerminalWindow : MonoBehaviour
     void Start()
     {
 
-        doneCommands = new List<bool>(commandsToSay.Count);
+        for (int i = 0; i < commandsToSay.Count; i++)
+        {
+            doneCommands.Add(false);
+        }
 
         for (int i = 0; i < startTexts.Count; i++)
         {
@@ -106,6 +109,7 @@ public class TerminalWindow : MonoBehaviour
         GameObject newLine = Instantiate(prefabLine);
         newLine.transform.SetParent(lines.transform);
         newLine.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        newLine.GetComponentInChildren<RectTransform>().transform.localScale = Vector3.one;
 
         userLine.transform.SetAsLastSibling();
     }
@@ -130,7 +134,7 @@ public class TerminalWindow : MonoBehaviour
         //}
 
         doneCommands[index] = true;
-        if (onDoneCommand[index] != null) onDoneCommand[index].Invoke();
+        if (index < onDoneCommand.Count-1 && onDoneCommand[index] != null) onDoneCommand[index].Invoke();
         canType = true;
     }
 

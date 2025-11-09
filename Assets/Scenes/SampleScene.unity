@@ -661,6 +661,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2095666343171374314, guid: b14e8e2f02416d8489eda05b2f82bbbe, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095666343171374314, guid: b14e8e2f02416d8489eda05b2f82bbbe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3203644104285409407, guid: b14e8e2f02416d8489eda05b2f82bbbe, type: 3}
       propertyPath: m_Name
       value: TerminalWindow
@@ -681,6 +689,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6073321973436628556, guid: b14e8e2f02416d8489eda05b2f82bbbe, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073321973436628556, guid: b14e8e2f02416d8489eda05b2f82bbbe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6783520855581114613, guid: b14e8e2f02416d8489eda05b2f82bbbe, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -696,6 +712,14 @@ PrefabInstance:
     - target: {fileID: 6783520855581114613, guid: b14e8e2f02416d8489eda05b2f82bbbe, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8265019583979320422, guid: b14e8e2f02416d8489eda05b2f82bbbe, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8265019583979320422, guid: b14e8e2f02416d8489eda05b2f82bbbe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
