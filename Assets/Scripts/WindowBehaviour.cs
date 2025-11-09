@@ -10,7 +10,7 @@ public class WindowBehaviour : MonoBehaviour,
     public Vector2 lastPosBeforeClosed;
     public bool isWindowOpen = true;
     
-    private TaskBarIconBehaviour taskBarIcon;
+    public TaskBarIconBehaviour taskBarIcon;
     
     public int id;
 
@@ -36,11 +36,6 @@ public class WindowBehaviour : MonoBehaviour,
             Destroy(taskBarIcon.gameObject);
         }
         Destroy(mainParentTransform.gameObject);
-    }
-
-    public void SetIcon(TaskBarIconBehaviour icon)
-    {
-        taskBarIcon =  icon;
     }
     
     public void OnBeginDrag(PointerEventData eventData)

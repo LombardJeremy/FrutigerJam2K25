@@ -2,37 +2,23 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class TaskBarIconBehaviour : MonoBehaviour,
-IDragHandler, IBeginDragHandler, IEndDragHandler
+public class TaskBarIconBehaviour : MonoBehaviour
 {
-    [SerializeField] private Canvas canvas;
-    public WindowBehaviour parentWindow;
-    [SerializeField] private TMP_Text date;
-
+    public WindowData parentWindow;
+    public Sprite iconSprite;
     
-    private void Start()
-    {
-        if(parentWindow == null) Destroy(this);
-        parentWindow.SetIcon(this);
-
-    }
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-    }
-
     public void IconIsClicked()
     {
-        parentWindow.MinimizeWindow();
+        parentWindow.ownBehaviour.MinimizeWindow();
+    }
+
+    public void SetIconSprite()
+    {
+        if (iconSprite != null)
+        {
+            GetComponent<Image>().sprite = iconSprite;
+        }
     }
 }
