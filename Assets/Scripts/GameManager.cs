@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public TerminalStart terminalStart;
     public GameState currentGameState;
     public UnityEvent<GameState> OnGameStateChanged = new UnityEvent<GameState>();
     

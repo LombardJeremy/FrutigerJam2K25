@@ -53,6 +53,15 @@ public class TerminalStart : MonoBehaviour
             caretTimer = 0;
         }
 
+        /*
+        for (int i = 0; i < lines.transform.childCount; i++)
+        {
+            lines.transform.GetChild(i).GetComponent<RectTransform>().position = new Vector3(lines.transform.GetChild(i).transform.position.x, lines.transform.GetChild(i).transform.position.y, 0);
+        }
+        */
+        
+        
+
 
         if (Input.anyKeyDown)
         {
@@ -106,10 +115,10 @@ public class TerminalStart : MonoBehaviour
 
     void AddLine(string text)
     {
-        GameObject newLine = Instantiate(prefabLine);
-        newLine.transform.SetParent(lines.transform);
+        GameObject newLine = Instantiate(prefabLine, lines.transform);
         newLine.transform.localScale = Vector3.one;
         newLine.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        newLine.transform.position = userLine.transform.position;
 
         userLine.transform.SetAsLastSibling();
     }

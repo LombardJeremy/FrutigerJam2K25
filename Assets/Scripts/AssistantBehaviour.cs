@@ -85,7 +85,8 @@ public class AssistantBehaviour : MonoBehaviour
 
     public void MoveTo(Vector3 pos)
     {
-        transform.DOMove(pos, 3f).SetEase(Ease.InOutSine);
+        ChangeState(AssistantState.Running);
+        transform.DOMove(pos, 3f).SetEase(Ease.InOutSine).OnComplete( () => { ChangeState(AssistantState.Idle); });
     }
 
     public void SetAndPrintText(string text)
@@ -99,6 +100,7 @@ public class AssistantBehaviour : MonoBehaviour
             StopCoroutine(typingCoroutine);
 
         typingCoroutine = StartCoroutine(TypeText(text));
+        ChangeState(AssistantState.Speakin);
     }
 
     private IEnumerator TypeText(string fullText)
@@ -111,6 +113,8 @@ public class AssistantBehaviour : MonoBehaviour
             speechBoxText.maxVisibleCharacters = i;
             yield return new WaitForSeconds(.05f);
         }
+
+        ChangeState(AssistantState.Idle);
     }
 
     public enum AssistantState
