@@ -13,6 +13,7 @@ public class TerminalWindow : MonoBehaviour
     [SerializeField] GameObject prefabLine;
     [SerializeField] TextMeshProUGUI line;
     [SerializeField] TextMeshProUGUI caret;
+    [SerializeField] int sizeText;
 
     [SerializeField] List<string> startTexts;
 
@@ -89,11 +90,7 @@ public class TerminalWindow : MonoBehaviour
 
             StartCoroutine(OnDoneCommand(commandsToSay.IndexOf(userInput)));
 
-            int done = 0;
-            for (int i = 0; i < commandsToSay.Count; i++)
-                if (doneCommands[i]) { done++; }
-
-            if (done >= commandsToSay.Count) OnLastCommand();
+            
         }
         line.text = "";
     }
@@ -110,6 +107,7 @@ public class TerminalWindow : MonoBehaviour
         newLine.transform.SetParent(lines.transform);
         newLine.GetComponentInChildren<TextMeshProUGUI>().text = text;
         newLine.GetComponentInChildren<RectTransform>().transform.localScale = Vector3.one;
+        newLine.GetComponentInChildren<TextMeshProUGUI>().fontSize = sizeText;
 
         userLine.transform.SetAsLastSibling();
     }
@@ -136,6 +134,12 @@ public class TerminalWindow : MonoBehaviour
         doneCommands[index] = true;
         if (index < onDoneCommand.Count-1 && onDoneCommand[index] != null) onDoneCommand[index].Invoke();
         canType = true;
+
+        int done = 0;
+        for (int i = 0; i < commandsToSay.Count; i++)
+            if (doneCommands[i]) { done++; }
+
+        if (done >= commandsToSay.Count) OnLastCommand();
     }
 
     void OnLastCommand()
@@ -148,9 +152,9 @@ public class TerminalWindow : MonoBehaviour
     IEnumerator OnLastCommandCoroutine()
     {
         // ICI FAUT FAIRE LE TRUC POUR LES DERNIERS TEXTS
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         AddLine("you found all the secrets");
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
 
         onEndTerminal.Invoke();
     }
