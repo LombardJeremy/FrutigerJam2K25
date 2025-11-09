@@ -23,12 +23,19 @@ public class DoubleClick : MonoBehaviour, IPointerClickHandler
         {
             // Reset pour éviter les triples clics
             lastClickTime = -1f;
-            onDoubleClick?.Invoke();
+            OnDoubleClick();
         }
         else
         {
             // Premier clic détecté
             lastClickTime = time;
         }
+    }
+
+    public void OnDoubleClick()
+    {
+        // Animation dotween ?
+
+        onDoubleClick?.Invoke();
     }
 }
