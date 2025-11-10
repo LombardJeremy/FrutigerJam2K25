@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
@@ -38,6 +39,12 @@ public class Thrower : MonoBehaviour
 
         AssistantBehaviour.instance.onStartDialog.AddListener( () => { isInDialog = true; });
         AssistantBehaviour.instance.onFinishDialog.AddListener(() => { isInDialog = false; });
+    }
+
+    private void OnDisable()
+    {
+        AssistantBehaviour.instance.onStartDialog.RemoveListener( () => { isInDialog = true; });
+        AssistantBehaviour.instance.onFinishDialog.RemoveListener(() => { isInDialog = false; });
     }
 
     void Update()

@@ -53,8 +53,8 @@ public class StartDialog : MonoBehaviour
         yield return new WaitForSeconds(10f);
         assistant.SetAndPrintText("Appuis a nouveau sur la barre espace lorsque ta souris est sur l'element souhaité !");
         yield return new WaitForSeconds(5f);
-        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
         AssistantBehaviour.instance.onFinishDialog.Invoke();
+        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
 
         // END dialog start
     }
@@ -71,8 +71,8 @@ public class StartDialog : MonoBehaviour
         yield return new WaitForSeconds(6f);
         assistant.SetAndPrintText("Fouille donc dedans, fais comme chez toi!");
         yield return new WaitForSeconds(3f);
-        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
         AssistantBehaviour.instance.onFinishDialog.Invoke();
+        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
         
         // END dialog
     }
