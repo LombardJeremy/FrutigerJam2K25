@@ -19,6 +19,9 @@ public class TaskBarManager : MonoBehaviour
     [SerializeField] private int countToUnlock;
     
     [SerializeField] private TMP_Text date;
+
+    public AudioClip sucessClip;
+    public AudioClip tryClip;
     void Awake()
     {
         if (instance == null)
@@ -42,10 +45,12 @@ public class TaskBarManager : MonoBehaviour
         {
             //PlayAnim
             GetComponent<RectTransform>().DOShakePosition( 1f, 4f, 15, 95f, true, true);
+            GetComponent<SFXBehaviour>().PlaySFX(tryClip);
         }
         else
         {
             if (_isTaskBarUnlocked) return;
+            GetComponent<SFXBehaviour>().PlaySFX(sucessClip);
             _isTaskBarUnlocked = true;
             _canvasGroup.blocksRaycasts = true;
             _canvasGroup.interactable = true;
