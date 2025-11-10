@@ -58,7 +58,7 @@ public class Categories : MonoBehaviour
 
 
         mainSceneManager.asMouse = true;
-        buttonUpdate.DOLocalMoveX(1f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCirc);
+        buttonUpdate.DOLocalMoveX(10f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCirc);
 
         textUpdate.text = "Chargement de la mise à jour";
         for (int i = 0; i < 3; i++)

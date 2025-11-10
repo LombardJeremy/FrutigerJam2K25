@@ -9581,6 +9581,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1760483072369385099, guid: b65ec00712393a84d905c30333b0e887, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -40
+      objectReference: {fileID: 0}
     - target: {fileID: 1931771116948131747, guid: b65ec00712393a84d905c30333b0e887, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9620,6 +9624,10 @@ PrefabInstance:
     - target: {fileID: 2854890434289858572, guid: b65ec00712393a84d905c30333b0e887, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854890434289858572, guid: b65ec00712393a84d905c30333b0e887, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 480.32
       objectReference: {fileID: 0}
     - target: {fileID: 2854890434289858572, guid: b65ec00712393a84d905c30333b0e887, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -9860,6 +9868,14 @@ PrefabInstance:
     - target: {fileID: 6650022348351220654, guid: b65ec00712393a84d905c30333b0e887, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670324908674298631, guid: b65ec00712393a84d905c30333b0e887, type: 3}
+      propertyPath: m_margin.z
+      value: 0.09117116
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670324908674298631, guid: b65ec00712393a84d905c30333b0e887, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8273384205051639729, guid: b65ec00712393a84d905c30333b0e887, type: 3}
       propertyPath: mainSceneManager
