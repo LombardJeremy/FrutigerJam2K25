@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -39,11 +40,21 @@ public class MainSceneManager : MonoBehaviour
 
         if (newState == GameState.EndOS)
         {
-            AudioManager.Instance.StopMusic();
-            canvasGroup.DOFade(0, 1);
-            canvasGroup.blocksRaycasts = false;
-            canvasGroup.interactable = false;
+            StopAllCoroutines();
+            StartCoroutine(EndScene());
         }
+    }
+
+    IEnumerator EndScene()
+    {
+        AudioManager.Instance._mainAudioSource.DOFade(0, 1f);
+        AudioManager.Instance.StopMusic();
+        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.End);
+        yield return new WaitForSeconds(3.4f);
+        canvasGroup.DOFade(0, 1);
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
+        GameManager.instance.ChangeState(GameState.FinalScene);
     }
 
     private void OnDisable()

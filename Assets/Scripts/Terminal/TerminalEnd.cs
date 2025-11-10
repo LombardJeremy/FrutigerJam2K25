@@ -37,7 +37,7 @@ public class TerminalEnd : MonoBehaviour
 
     public void OnCallState(GameState state)
     {
-        if (state == GameState.EndOS)
+        if (state == GameState.FinalScene)
         {
             StartEndTerminal();
         }

@@ -99,6 +99,9 @@ public class AssistantBehaviour : MonoBehaviour
             case AssistantState.Start:
                 anim.SetTrigger("Intro");
                 break;
+            case AssistantState.End:
+                anim.SetTrigger("EndCutscene");
+                break;
         }
 
     }
