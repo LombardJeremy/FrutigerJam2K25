@@ -29,6 +29,13 @@ public class MainSceneManager : MonoBehaviour
             canvasGroup.blocksRaycasts = false;
             canvasGroup.interactable = false;
         }
+
+        if (newState == GameState.EndOS)
+        {
+            canvasGroup.DOFade(0, 1);
+            canvasGroup.blocksRaycasts = false;
+            canvasGroup.interactable = false;
+        }
     }
 
     private void OnDisable()

@@ -274,6 +274,7 @@ public class Game : MonoBehaviour
         }
         
         GameManager.instance.ChangeState(GameState.EndOS);
+        Destroy(GetComponentInParent<WindowData>().gameObject);
     }
 
     private bool TryGetCellAtMousePosition(out Cell cell)

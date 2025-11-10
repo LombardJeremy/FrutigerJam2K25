@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,13 +26,30 @@ public class TerminalEnd : MonoBehaviour
 
     private void Start()
     {
-        StartEndTerminal();
+        GameManager.instance.OnGameStateChanged.AddListener(OnCallState);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.OnGameStateChanged.RemoveListener(OnCallState);
+
+    }
+
+    public void OnCallState(GameState state)
+    {
+        if (state == GameState.EndOS)
+        {
+            StartEndTerminal();
+        }
     }
 
     public void StartEndTerminal()
     {
+        CanvasGroup canvasGroup = GetComponentInParent<CanvasGroup>();
+        canvasGroup.alpha = 1;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
         AudioManager.Instance.PlayMusic(musicEnd);
-
         StartCoroutine(End());
     }
 
@@ -73,25 +91,24 @@ public class TerminalEnd : MonoBehaviour
 
     IEnumerator End()
     {
-
         yield return Wait(1f);
         AddLine("[SYS] Autorisation : Minny - niveau : Admin");
         yield return Wait(3f);
-        AddLine("[ERROR] Tentative de supprimer Security.exe, l'action n'est pas réalisable");
+        AddLine("[ERROR] Tentative de supprimer Security.exe, l'action n'est pas realisable");
         yield return Wait(5f);
         AddLine("[SYS] Bypass system security, user : Minny");
         yield return Wait(4f);
         ReplaceLastLine("[ERROR] Vous tentez de supprimer Security.exe");
         yield return Wait(4f);
-        ReplaceLastLine("[LOG] Security.exe a été supprimé");
+        ReplaceLastLine("[LOG] Security.exe a ete supprime");
         yield return Wait(4f);
         AddLine("[ALERT] Vous essayez de supprimer des composants essentiels au fonctionnement de l'ordinateur");
         yield return Wait(6f);
-        AddLine("[ERROR] Render.exe supprimé, l'ordinateur a besoin de réparation");
+        AddLine("[ERROR] Render.exe supprime, l'ordinateur a besoin de reparation");
         yield return Wait(1f);
-        AddLine("[LOG] Suppression de Render.exe succès");
+        AddLine("[LOG] Suppression de Render.exe succes");
         yield return Wait(3f);
-        AddLine("C'était amusant...");
+        AddLine("C'ï¿½tait amusant...");
         yield return Wait(3f);
         AddLine("[LOG] Suppression de Taskbar.exe");
         yield return Wait(1f);
@@ -101,11 +118,11 @@ public class TerminalEnd : MonoBehaviour
         yield return Wait(1f);
         AddLine("Il faut aller de l'avant non ?");
         yield return Wait(2f);
-        AddLine("J'ai bien aimé t'accompagner !");
+        AddLine("J'ai bien aime t'accompagner !");
         yield return Wait(2f);
-        AddLine("Mais bon, c'est que dans ta mémoire tout ça tu sais");
+        AddLine("Mais bon, c'est que dans ta memoire tout ca tu sais");
         yield return Wait(3f);
-        AddLine("Je pense pas que c'était aussi beau avant...");
+        AddLine("Je pense pas que c'etait aussi beau avant...");
         yield return Wait(3f);
         AddLine("[LOG] Suppresion de Sound.exe");
 
@@ -117,11 +134,12 @@ public class TerminalEnd : MonoBehaviour
         yield return Wait(1.3f);
         AddLine("[LOG] Suppresion de Minny.exe");
         yield return Wait(4f);
-        AddLine("[ERROR] Minny.exe a retourné une erreur en s'arrêtant");
+        AddLine("[ERROR] Minny.exe a retourne une erreur en s'arretant");
         yield return Wait(3f);
-        ReplaceLastLine("[ERROR] Minny.exe a retourné une erreur en s'arrêtant : Byeeee :)");
-
+        ReplaceLastLine("[ERROR] Minny.exe a retourne une erreur en s'arretant : Byeeee :)");
+        yield return Wait(7f);
         onEndTerminal.Invoke();
+        Application.Quit();
     }
 
     WaitForSeconds Wait(float time)
