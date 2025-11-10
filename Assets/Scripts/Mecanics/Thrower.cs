@@ -22,6 +22,9 @@ public class Thrower : MonoBehaviour
 
     float posXbase = 0;
 
+    float timeNotTouch = 0;
+    float timeMaxNotTouch = 2f;
+
     void Start()
     {
         posXbase = objectToThrow.transform.localPosition.x;
@@ -56,7 +59,7 @@ public class Thrower : MonoBehaviour
                     repositioning = true;
                     objectToThrow.linearVelocity = Vector2.zero;
                     // Dotween pour revenir � la pos
-                    objectToThrow.transform.DOLocalMoveX(posXbase, 0.3f).SetEase(Ease.InOutCirc).OnComplete( () => { hasObject = true; repositioning = false; });
+                    objectToThrow.transform.DOLocalMoveX(posXbase, 0.3f).SetEase(Ease.InOutCirc).OnComplete( () => { AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.RecieveThrow); hasObject = true; repositioning = false; });
                 }
             }
         }
@@ -69,10 +72,10 @@ public class Thrower : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            
             Canvas canvas = objectToThrow.GetComponentInParent<Canvas>();
             Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, objectToThrow.position);
             bool result = intManager.IsCollidingWithElements(screenPos);
-            Debug.Log(result);
         }
     }
 
@@ -81,22 +84,34 @@ public class Thrower : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.rotation *= Quaternion.Euler(0, 0, -speedRotation * Time.deltaTime);
+            AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.ThrowMode);
+            timeNotTouch = 0;
         }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.rotation *= Quaternion.Euler(0, 0, speedRotation * Time.deltaTime);
+            AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.ThrowMode);
+            timeNotTouch = 0;
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
+            timeNotTouch = 0;
         }
+        
+        
+        timeNotTouch += Time.deltaTime;
+        if (timeNotTouch > timeMaxNotTouch)
+        {
+            AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
+        }
+        
     }
 
     private void Shoot()
     {
         hasObject = false;
+        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Throw);
         objectToThrow.linearVelocity = transform.rotation.normalized * new Vector2(speedShoot, 0);
     }
 }
