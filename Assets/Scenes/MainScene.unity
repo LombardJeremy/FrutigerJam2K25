@@ -679,8 +679,8 @@ MonoBehaviour:
   intManager: {fileID: 601008441}
   objectToThrow: {fileID: 1164671443}
   speedRotation: 100
-  speedShoot: 4.5
-  friction: 2
+  speedShoot: 5
+  friction: 1.8
 --- !u!1 &173093220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,6 +1939,7 @@ MonoBehaviour:
   minesweeper: {fileID: 1359022694}
   _asBomb: 0
   _asFlintAndSteel: 0
+  _taskBarUnlocked: 0
 --- !u!1 &795221060
 GameObject:
   m_ObjectHideFlags: 0
@@ -8848,7 +8849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -654, y: -6.88}
+  m_AnchoredPosition: {x: -654, y: -6.880001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1651876328
