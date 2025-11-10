@@ -85,12 +85,16 @@ public class Categories : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        textUpdate.text = "Système mis à jour";
+        textUpdate.text = "Système à jour";
         buttonUpdate.DOKill();
         buttonUpdate.DOLocalMoveX(0, 0.5f);
 
         audioSource.clip = success;
         audioSource.Play();
+
+        PopupWindow.Instance.SetPopup("Souris activé !");
+        buttonUpdate.GetComponent<Image>().DOFade(0, 0.5f);
+        buttonUpdate.GetComponentInChildren<TextMeshProUGUI>().DOFade(0, 0.5f);
 
         GameManager.instance.minesweeper.SetActive(true);
     }

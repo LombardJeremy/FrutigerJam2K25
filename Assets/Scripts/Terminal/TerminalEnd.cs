@@ -53,7 +53,7 @@ public class TerminalEnd : MonoBehaviour
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
-        AudioManager.Instance.PlayMusic(musicEnd);
+        //AudioManager.Instance.PlayMusic(musicEnd);
         StartCoroutine(End());
     }
 

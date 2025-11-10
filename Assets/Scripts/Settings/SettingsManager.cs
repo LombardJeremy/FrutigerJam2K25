@@ -45,6 +45,9 @@ public class SettingsManager : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.currentGameState != GameState.Parameter) return;
+
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (isInCategory) return;
@@ -70,18 +73,19 @@ public class SettingsManager : MonoBehaviour
             if (isInCategory) return;
             OnAppear();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Escape))
         {
+            if (!isInCategory)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                    GameManager.instance.ChangeState(GameState.MainOS);
+
+            }
+
             if (!isInCategory) return;
-            OnHide();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isInCategory) return;
-            GameManager.instance.ChangeState(GameState.MainOS);
-        }
+            OnHide();   
 
-
+        }
     }
 
     void OnAppear()

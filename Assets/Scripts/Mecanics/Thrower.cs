@@ -49,6 +49,8 @@ public class Thrower : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.currentGameState != GameState.MainOS) return;
+            
         if (isInDialog) return;
 
         HandleInput();

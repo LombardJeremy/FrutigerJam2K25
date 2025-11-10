@@ -9,6 +9,7 @@ public class MainSceneManager : MonoBehaviour
     private CanvasGroup canvasGroup;
     
     public AudioClip mainClip;
+    public AudioClip endClip;
     public AudioClip parameterClip;
 
     public bool asMouse = false;
@@ -50,6 +51,7 @@ public class MainSceneManager : MonoBehaviour
         AudioManager.Instance._mainAudioSource.DOFade(0, 1f);
         AudioManager.Instance.StopMusic();
         AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.End);
+        AudioManager.Instance.PlayMusic(endClip);
         yield return new WaitForSeconds(3.4f);
         canvasGroup.DOFade(0, 1);
         canvasGroup.blocksRaycasts = false;
