@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +9,11 @@ public class Categories : MonoBehaviour
     [SerializeField] Transform childs;
 
     [SerializeField] Slider soundSlider;
+
+    [SerializeField] TextMeshProUGUI textUpdate;
+    [SerializeField] Transform buttonUpdate;
+
+    bool loadingOS = false;
 
     int sec = 0;
 
@@ -37,8 +44,45 @@ public class Categories : MonoBehaviour
 
     void UpdateForOS()
     {
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !loadingOS)
+        {
+            StartCoroutine(UpdateOSCoroutine());
+        }
+    }
+
+    IEnumerator UpdateOSCoroutine()
+    {
+        loadingOS = true;
+
+        buttonUpdate.DOLocalMoveX(1f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCirc);
+
+        textUpdate.text = "Chargement de la mise à jour";
+        for (int i = 0; i < 3; i++)
+        {
+            textUpdate.text += ".";
+            yield return new WaitForSeconds(1f);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        textUpdate.text = "Installation en cours";
+        for (int i = 0; i < 3; i++)
+        {
+            textUpdate.text += ".";
+            yield return new WaitForSeconds(1f);
+        }
+
+        textUpdate.text = "Mise à jour installé ! Veuillez patienter";
+
+        yield return new WaitForSeconds(2f);
+
+        textUpdate.text = "Système mis à jour";
+        buttonUpdate.DOKill();
+        buttonUpdate.DOLocalMoveX(0, 0.5f);
+
         GameManager.instance.minesweeper.SetActive(true);
     }
+
 
     void SoundInput()
     {
