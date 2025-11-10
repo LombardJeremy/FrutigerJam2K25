@@ -3,6 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class AssistantBehaviour : MonoBehaviour
@@ -17,10 +18,13 @@ public class AssistantBehaviour : MonoBehaviour
 
     public Animator anim;
 
+    public UnityEvent onStartDialog = new UnityEvent();
+    public UnityEvent onFinishDialog = new UnityEvent();
+
     public Transform minny;
 
     private Coroutine typingCoroutine;
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
