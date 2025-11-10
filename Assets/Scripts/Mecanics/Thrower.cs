@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class Thrower : MonoBehaviour
@@ -9,16 +10,19 @@ public class Thrower : MonoBehaviour
 
     [Header("Params Thrower")]
     [SerializeField] Rigidbody2D objectToThrow;
+    [SerializeField] Transform indicator;
     [SerializeField] float speedRotation = 100;
 
 
     [Header("Params Shoot")]
     [SerializeField] float speedShoot = 400f;
     [SerializeField] float friction = 2f;
+    [SerializeField] float timeWaitShoot = 2f;
 
     bool hasObject = true;
     bool objectReturn = false;
     bool repositioning = false;
+    bool isShooting = false;
 
     float posXbase = 0;
 
@@ -28,6 +32,7 @@ public class Thrower : MonoBehaviour
     void Start()
     {
         posXbase = objectToThrow.transform.localPosition.x;
+        objectToThrow.gameObject.SetActive(false);
     }
 
     void Update()
@@ -48,18 +53,18 @@ public class Thrower : MonoBehaviour
                 if (Vector2.Distance(objectToThrow.linearVelocity, Vector2.zero) < 0.1f)
                 {
                     objectReturn = true;
-                    objectToThrow.linearVelocity = (transform.position - objectToThrow.transform.position).normalized * speedShoot;
+                    objectReturn = false;
+                    repositioning = true;
+                    objectToThrow.linearVelocity = Vector2.zero;
+                    //objectToThrow.linearVelocity = (transform.position - objectToThrow.transform.position).normalized * speedShoot;
+                    objectToThrow.transform.DOLocalMoveX(0, 2f).SetEase(Ease.InOutCirc).OnComplete(() => { AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.RecieveThrow); hasObject = true; repositioning = false; objectToThrow.gameObject.SetActive(false); });
                 }
             }
             else
             {
-                if (Vector2.Distance(objectToThrow.transform.position, transform.position) < posXbase)
+                if (Vector2.Distance(objectToThrow.transform.position, transform.position) < 0)
                 {
-                    objectReturn = false;
-                    repositioning = true;
-                    objectToThrow.linearVelocity = Vector2.zero;
-                    // Dotween pour revenir � la pos
-                    objectToThrow.transform.DOLocalMoveX(posXbase, 0.3f).SetEase(Ease.InOutCirc).OnComplete( () => { AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.RecieveThrow); hasObject = true; repositioning = false; });
+                    
                 }
             }
         }
@@ -81,6 +86,8 @@ public class Thrower : MonoBehaviour
 
     private void HasObjectUpdate()
     {
+        if (isShooting) return;
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.rotation *= Quaternion.Euler(0, 0, -speedRotation * Time.deltaTime);
@@ -98,7 +105,7 @@ public class Thrower : MonoBehaviour
             Shoot();
             timeNotTouch = 0;
         }
-        AssistantBehaviour.instance.LookAt((objectToThrow.transform.position - transform.position).normalized * 100f);
+        AssistantBehaviour.instance.LookAt((indicator.position - transform.position).normalized * 100f);
 
         timeNotTouch += Time.deltaTime;
         if (timeNotTouch > timeMaxNotTouch)
@@ -110,8 +117,17 @@ public class Thrower : MonoBehaviour
 
     private void Shoot()
     {
-        hasObject = false;
         AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Throw);
+        StartCoroutine(ShootCoroutine());
+    }
+
+    IEnumerator ShootCoroutine()
+    {
+        isShooting = true;
+        yield return new WaitForSeconds(timeWaitShoot);
+        isShooting = false;
+        hasObject = false;
+        objectToThrow.gameObject.SetActive(true);
         objectToThrow.linearVelocity = transform.rotation.normalized * new Vector2(speedShoot, 0);
     }
 }
