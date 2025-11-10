@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,6 +13,7 @@ public class WindowBehaviour : MonoBehaviour,
     public Vector2 lastPosBeforeClosed;
     public bool isWindowOpen = true;
     
+    private bool isclosing = false;
     public TaskBarIconBehaviour taskBarIcon;
 
     private void Start()
@@ -35,6 +38,17 @@ public class WindowBehaviour : MonoBehaviour,
 
     public void CloseWindow()
     {
+        if (!isclosing)
+        {
+            StartCoroutine(CloseAnimation());
+            isclosing  = true;
+        }
+    }
+
+    IEnumerator CloseAnimation()
+    {
+        mainParentTransform.DOScale(0f, 0.5f).SetEase(Ease.InOutSine);
+        yield return new WaitForSeconds(0.7f);
         if (taskBarIcon != null)
         {
             Destroy(taskBarIcon.gameObject);
