@@ -98,8 +98,8 @@ public class Thrower : MonoBehaviour
             Shoot();
             timeNotTouch = 0;
         }
-        
-        
+        AssistantBehaviour.instance.LookAt((objectToThrow.transform.position - transform.position).normalized * 100f);
+
         timeNotTouch += Time.deltaTime;
         if (timeNotTouch > timeMaxNotTouch)
         {

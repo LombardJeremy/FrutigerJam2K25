@@ -52,7 +52,7 @@ public class AssistantBehaviour : MonoBehaviour
     public void LookAt(Vector3 pos)
     {
         minny.LookAt(pos);
-        minny.rotation = Quaternion.Euler(0, minny.rotation.eulerAngles.y, 0);
+        minny.rotation = Quaternion.Euler(0, 90 + minny.rotation.eulerAngles.y, 0);
     }
 
 
