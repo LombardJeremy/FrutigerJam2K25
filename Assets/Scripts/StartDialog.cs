@@ -36,6 +36,8 @@ public class StartDialog : MonoBehaviour
 
     IEnumerator Dialog()
     {
+        AssistantBehaviour.instance.onStartDialog.Invoke();
+        assistant.LookAt(Vector3.zero);
         assistant.SetAndPrintText("");
         AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Start);
         yield return new WaitForSeconds(12.44f);
@@ -52,12 +54,15 @@ public class StartDialog : MonoBehaviour
         assistant.SetAndPrintText("Appuis a nouveau sur la barre espace lorsque ta souris est sur l'element souhaité !");
         yield return new WaitForSeconds(14f);
         AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
+        AssistantBehaviour.instance.onFinishDialog.Invoke();
 
         // END dialog start
     }
     
     IEnumerator TaskBarDialog()
     {
+        AssistantBehaviour.instance.onStartDialog.Invoke();
+        assistant.LookAt(Vector3.zero);
         assistant.SetAndPrintText("");
         AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Speakin);
         yield return new WaitForSeconds(12.44f);
@@ -69,11 +74,13 @@ public class StartDialog : MonoBehaviour
         yield return new WaitForSeconds(10f);
         assistant.SetAndPrintText("Tiens, je vais lancer ta souris, ce sera simple comme bonjour avec cette solution !");
         yield return new WaitForSeconds(10f);
+        AssistantBehaviour.instance.onFinishDialog.Invoke();
+        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
         assistant.SetAndPrintText("Vise avec les flèches directionnelles et tire avec la barre espace.");
         yield return new WaitForSeconds(14f);
         assistant.SetAndPrintText("Appuis a nouveau sur la barre espace lorsque ta souris est sur l'element souhaité !");
         yield return new WaitForSeconds(14f);
-        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
+        
 
         // END dialog
     }
