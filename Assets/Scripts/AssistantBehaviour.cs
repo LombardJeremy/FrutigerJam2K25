@@ -3,6 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class AssistantBehaviour : MonoBehaviour
     [SerializeField] private TMP_Text speechBoxText;
     [SerializeField] private RectTransform speechBox;
     public AssistantState currentAssistantState;
+    public AudioSource audioSource;
     
     public Action<AssistantState> OnStateChange;
     
@@ -133,6 +135,7 @@ public class AssistantBehaviour : MonoBehaviour
 
         for (int i = 0; i <= fullText.Length; i++)
         {
+            if (fullText != "") audioSource.Play();
             speechBoxText.maxVisibleCharacters = i;
             yield return new WaitForSeconds(.05f);
         }
