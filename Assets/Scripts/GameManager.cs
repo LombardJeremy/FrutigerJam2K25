@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public bool _asBomb;
     public bool _asFlintAndSteel;
+
+    public bool _taskBarUnlocked = false;
     
     private void Awake()
     {
