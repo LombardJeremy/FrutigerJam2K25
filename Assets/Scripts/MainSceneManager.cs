@@ -7,6 +7,11 @@ public class MainSceneManager : MonoBehaviour
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     
+    public AudioClip mainClip;
+    public AudioClip parameterClip;
+
+    public bool asMouse = false;
+    
     void Start()
     {
         GameManager.instance.OnGameStateChanged.AddListener(OnGameStateChanged);
@@ -19,8 +24,9 @@ public class MainSceneManager : MonoBehaviour
         if (newState == GameState.MainOS)
         {
             canvasGroup.DOFade(1, 1);
-            canvasGroup.blocksRaycasts = true;
+            if(asMouse) canvasGroup.blocksRaycasts = true;
             canvasGroup.interactable = true;
+            AudioManager.Instance.PlayMusic(mainClip);
         }
 
         if (newState == GameState.Parameter)
@@ -28,10 +34,12 @@ public class MainSceneManager : MonoBehaviour
             canvasGroup.DOFade(0, 1);
             canvasGroup.blocksRaycasts = false;
             canvasGroup.interactable = false;
+            AudioManager.Instance.PlayMusic(parameterClip);
         }
 
         if (newState == GameState.EndOS)
         {
+            AudioManager.Instance.StopMusic();
             canvasGroup.DOFade(0, 1);
             canvasGroup.blocksRaycasts = false;
             canvasGroup.interactable = false;
