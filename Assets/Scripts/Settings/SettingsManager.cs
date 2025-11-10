@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 
 public class SettingsManager : MonoBehaviour
@@ -15,6 +16,8 @@ public class SettingsManager : MonoBehaviour
     float posXCategories = 0f;
     
     public CanvasGroup canvasGroup;
+
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -45,12 +48,22 @@ public class SettingsManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (isInCategory) return;
+            int index = carousel.GetSelectedIndex();
             carousel.Right();
+            int diff = carousel.GetSelectedIndex() - index;
+
+            if (diff != 0)
+                audioSource.Play();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (isInCategory) return;
+            int index = carousel.GetSelectedIndex();
             carousel.Left();
+            int diff = carousel.GetSelectedIndex() - index;
+
+            if (diff != 0)
+                audioSource.Play();
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {

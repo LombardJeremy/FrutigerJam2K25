@@ -2912,7 +2912,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a5976bdebb22b2940aff6962b190aa23, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -9680,6 +9680,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1519185536954832496, guid: b65ec00712393a84d905c30333b0e887, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1804970685}
     - target: {fileID: 1760483072369385099, guid: b65ec00712393a84d905c30333b0e887, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -40
@@ -10000,6 +10004,11 @@ PrefabInstance:
 --- !u!224 &1804970684 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4519213215325547828, guid: b65ec00712393a84d905c30333b0e887, type: 3}
+  m_PrefabInstance: {fileID: 1804970683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1804970685 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1569048565386484461, guid: b65ec00712393a84d905c30333b0e887, type: 3}
   m_PrefabInstance: {fileID: 1804970683}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1890889509

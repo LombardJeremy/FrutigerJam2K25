@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class Categories : MonoBehaviour
@@ -12,7 +13,11 @@ public class Categories : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI textUpdate;
     [SerializeField] Transform buttonUpdate;
-    
+
+    [Header("SOUNDS")]
+    public AudioSource audioSource;
+    public AudioClip success;
+
     public MainSceneManager mainSceneManager;
 
     bool loadingOS = false;
@@ -83,6 +88,9 @@ public class Categories : MonoBehaviour
         textUpdate.text = "Système mis à jour";
         buttonUpdate.DOKill();
         buttonUpdate.DOLocalMoveX(0, 0.5f);
+
+        audioSource.clip = success;
+        audioSource.Play();
 
         GameManager.instance.minesweeper.SetActive(true);
     }
