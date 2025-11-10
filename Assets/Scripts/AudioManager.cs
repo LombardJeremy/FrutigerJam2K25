@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -25,10 +27,19 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip musicToPlay)
     {
+        StopAllCoroutines();
+        StartCoroutine(SmoothMusic(musicToPlay));
+    }
+
+    IEnumerator SmoothMusic(AudioClip musicToPlay)
+    {
+        _mainAudioSource.DOFade(0f, 1f);
+        yield return new WaitForSeconds(1f);
         _mainAudioSource.Stop();
         _mainAudioSource.clip = musicToPlay;
         _mainAudioSource.Play();
         _lastMusicPlayed =  musicToPlay;
+        _mainAudioSource.DOFade(1f, 1f);
     }
 
     public void PlayLastMusic()

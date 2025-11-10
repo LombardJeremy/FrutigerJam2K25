@@ -681,7 +681,7 @@ MonoBehaviour:
   objectToThrow: {fileID: 1164671443}
   indicator: {fileID: 984561743}
   speedRotation: 100
-  speedShoot: 5
+  speedShoot: 5.2
   friction: 1.8
   timeWaitShoot: 0.2
 --- !u!1 &173093220
@@ -1921,6 +1921,7 @@ MonoBehaviour:
   - {fileID: 151153289}
   - {fileID: 1224926363}
   - {fileID: 1359022701}
+  - {fileID: 1651876331}
   - {fileID: 837328417}
 --- !u!114 &601008442
 MonoBehaviour:
@@ -7623,7 +7624,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125789433}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -9800,9 +9801,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895852894}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1895852900
 MonoBehaviour:
@@ -9816,6 +9817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9b288eee88acc45a8ae7a149e230a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainClip: {fileID: 8300000, guid: a3e075397d78a2b4795699770880cfb5, type: 3}
+  parameterClip: {fileID: 8300000, guid: d58f23447442bf6449d021c1ccdbefe9, type: 3}
+  asMouse: 0
 --- !u!95 &1999308889 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1941420685211336567, guid: a19f28618f1c8f34a98b3cd461639882, type: 3}
