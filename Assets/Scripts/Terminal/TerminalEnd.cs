@@ -16,6 +16,10 @@ public class TerminalEnd : MonoBehaviour
     [SerializeField] TextMeshProUGUI caret;
     [SerializeField] int sizeText;
     [SerializeField] AudioClip musicEnd;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip linePop;
+
+    bool hasMusic = true;
 
     float caretTimer = 0;
     [SerializeField] float caretTime = 0.5f;
@@ -81,6 +85,13 @@ public class TerminalEnd : MonoBehaviour
         newLine.GetComponentInChildren<TextMeshProUGUI>().fontSize = sizeText;
 
         userLine.transform.SetAsLastSibling();
+
+        if (hasMusic)
+        {
+            audioSource.Stop();
+            audioSource.clip = linePop;
+            audioSource.Play();
+        }
     }
 
     void ReplaceLastLine(string text)
@@ -123,6 +134,7 @@ public class TerminalEnd : MonoBehaviour
         AddLine("Mais bon, c'est que dans ta memoire tout ca tu sais");
         yield return Wait(3f);
         AddLine("Je pense pas que c'etait aussi beau avant...");
+        hasMusic = false;
         yield return Wait(3f);
         AddLine("[LOG] Suppresion de Sound.exe");
 

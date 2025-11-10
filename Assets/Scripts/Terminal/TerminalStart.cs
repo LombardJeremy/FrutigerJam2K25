@@ -17,6 +17,9 @@ public class TerminalStart : MonoBehaviour
     //[SerializeField] TMP_InputField inputField;
     [SerializeField] TextMeshProUGUI line;
     [SerializeField] TextMeshProUGUI caret;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip typeSound;
+    [SerializeField] AudioClip linePop;
 
     [SerializeField] List<string> startTexts;
 
@@ -32,6 +35,8 @@ public class TerminalStart : MonoBehaviour
     
     public CanvasGroup canvasGroup;
 
+    bool end = false;
+
     void Start()
     {
 
@@ -43,6 +48,8 @@ public class TerminalStart : MonoBehaviour
 
     void Update()
     {
+        if (end) return;
+
         if (!canType) return;
 
         caretTimer += Time.deltaTime;
@@ -79,6 +86,9 @@ public class TerminalStart : MonoBehaviour
                 {
                     line.text += c;
                 }
+                audioSource.Stop();
+                audioSource.clip = typeSound;
+                audioSource.Play();
             }
             caretTimer = 0;
             caret.text = "";
@@ -121,6 +131,11 @@ public class TerminalStart : MonoBehaviour
         newLine.transform.position = userLine.transform.position;
 
         userLine.transform.SetAsLastSibling();
+
+
+        audioSource.Stop();
+        audioSource.clip = linePop;
+        audioSource.Play();
     }
 
     void ReplaceLastLine(string text)
@@ -172,6 +187,7 @@ public class TerminalStart : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         onEndTerminal.Invoke();
         EndIntro();
+        end = true;
     }
 
     public void EndIntro()

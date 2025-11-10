@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,9 +25,15 @@ public class TerminalWindow : MonoBehaviour
 
     [SerializeField] List<string> commandsToSay;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip typeSound;
+    [SerializeField] AudioClip linePop;
+
     List<bool> doneCommands = new List<bool>(); 
 
     bool canType = true;
+
+    bool end = false;
 
     public UnityEvent onEndTerminal = new UnityEvent();
     public List<UnityEvent> onDoneCommand = new List<UnityEvent>();
@@ -47,6 +54,8 @@ public class TerminalWindow : MonoBehaviour
 
     void Update()
     {
+        if (end) return;
+
         if (!canType) return;
 
         caretTimer += Time.deltaTime;
@@ -75,6 +84,10 @@ public class TerminalWindow : MonoBehaviour
                 {
                     line.text += c;
                 }
+
+                audioSource.Stop();
+                audioSource.clip = typeSound;
+                audioSource.Play();
             }
             caretTimer = 0;
             caret.text = "";
@@ -110,6 +123,10 @@ public class TerminalWindow : MonoBehaviour
         newLine.GetComponentInChildren<TextMeshProUGUI>().fontSize = sizeText;
 
         userLine.transform.SetAsLastSibling();
+
+        audioSource.Stop();
+        audioSource.clip = linePop;
+        audioSource.Play();
     }
 
     void ReplaceLastLine(string text)
@@ -155,6 +172,7 @@ public class TerminalWindow : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         AddLine("you found all the secrets");
         yield return new WaitForSeconds(0.5f);
+        end = true;
 
         onEndTerminal.Invoke();
     }
