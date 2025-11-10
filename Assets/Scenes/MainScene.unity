@@ -743,8 +743,8 @@ MonoBehaviour:
   intManager: {fileID: 601008441}
   objectToThrow: {fileID: 1164671443}
   speedRotation: 100
-  speedShoot: 45
-  friction: 20
+  speedShoot: 3
+  friction: 2
 --- !u!1 &173093220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,10 +1441,10 @@ RectTransform:
   - {fileID: 1586793119}
   m_Father: {fileID: 584260201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.5444107, y: -37.033714}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -4.3700027}
+  m_SizeDelta: {x: 0, y: -46.380005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &543021151
 MonoBehaviour:
@@ -3086,7 +3086,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -255.73999, y: 0}
+  m_AnchoredPosition: {x: -798, y: 58}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1120441263
@@ -3140,7 +3140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechBoxText: {fileID: 1586793120}
-  speechBox: {fileID: 543021150}
+  speechBox: {fileID: 801877677}
   currentAssistantState: 0
   anim: {fileID: 1999308889}
   minny: {fileID: 1999308890}
@@ -8105,8 +8105,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1125789433}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &1127944319
 GameObject:
@@ -9175,7 +9175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1586793120
@@ -9198,7 +9198,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Gougougaga
+  m_text: "Tu pourrais m'aider... Mais je viens de voir que le driver pour la souris
+    est cass\xE9\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 81e41762fd80d1f45becbea7894b4f82, type: 2}
   m_sharedMaterial: {fileID: 5949166589132190673, guid: 81e41762fd80d1f45becbea7894b4f82, type: 2}
@@ -9225,11 +9226,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.25
+  m_fontSize: 11.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 10.92
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
@@ -9259,11 +9260,11 @@ MonoBehaviour:
   m_verticalMapping: 0
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
+  m_IsTextObjectScaleStatic: 1
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -8.37376, y: 1.5027999, z: -5.719143, w: 44.809067}
+  m_margin: {x: -8.37376, y: -1.1433822, z: -5.719143, w: 0.58037186}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10781,8 +10782,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1895852894}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1895852900
 MonoBehaviour:
@@ -11104,7 +11105,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:

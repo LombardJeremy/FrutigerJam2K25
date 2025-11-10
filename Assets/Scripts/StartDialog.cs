@@ -28,16 +28,23 @@ public class StartDialog : MonoBehaviour
 
     IEnumerator Dialog()
     {
-        assistant.SetAndPrintText("Hellooooooo Áa fait longtemps non ?");
+        assistant.SetAndPrintText("");
+        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Start);
+        yield return new WaitForSeconds(12.44f);
+        assistant.SetAndPrintText("Hellooooooo √ßa fait longtemps non ?");
+        yield return new WaitForSeconds(5f);
+        assistant.SetAndPrintText("Hmmmmm cette endroit est un peu en ruine, il faudrait r√©parer tout ceci");
         yield return new WaitForSeconds(10f);
-        assistant.MoveTo(assistant.transform.position + Vector3.right * 10f);
-        yield return new WaitForSeconds(10f);
-        assistant.SetAndPrintText("Hmmmmm cette endroit est un peu en ruine, il faudrait rÈparer tout ceci");
-        yield return new WaitForSeconds(10f);
-        assistant.SetAndPrintText("Tu pourrais m'aider... Mais je viens de voir que le driver pour la souris est cassÈ");
+        assistant.SetAndPrintText("Tu pourrais m'aider... Mais je viens de voir que le driver pour la souris est cass√©");
         yield return new WaitForSeconds(10f);
         assistant.SetAndPrintText("Tiens, je vais lancer ta souris, ce sera simple comme bonjour avec cette solution !");
         yield return new WaitForSeconds(10f);
+        assistant.SetAndPrintText("Vise avec les fl√®ches directionnelles et tire avec la barre espace.");
+        yield return new WaitForSeconds(14f);
+        assistant.SetAndPrintText("Appuis a nouveau sur la barre espace lorsque ta souris est sur l'element souhait√© !");
+        yield return new WaitForSeconds(14f);
+        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
+
 
         // END dialog start
     }

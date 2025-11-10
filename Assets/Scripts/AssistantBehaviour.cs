@@ -34,6 +34,19 @@ public class AssistantBehaviour : MonoBehaviour
         //Play StartAnimation
         currentAssistantState = AssistantState.Idle;
         
+        /*
+        Canvas canvas = GetComponentInParent<Canvas>();
+        Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, minny.position);
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvas.transform as RectTransform,
+            screenPos,
+            canvas.worldCamera,
+            out Vector2 localPoint
+        );
+
+        speechBox.localPosition = localPoint;
+        */
     }
 
     public void LookAt(Vector3 pos)
@@ -78,6 +91,9 @@ public class AssistantBehaviour : MonoBehaviour
                 break;
             case AssistantState.RecieveThrow:
                 anim.SetTrigger("CursorRecieved");
+                break;
+            case AssistantState.Start:
+                anim.SetTrigger("Intro");
                 break;
         }
 
