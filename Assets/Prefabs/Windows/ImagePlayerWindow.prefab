@@ -955,7 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d573460e54e6500489a2c3eaab3d05a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: -6985217527476431760, guid: 582f7d0c19467ee459a863e0f700022a, type: 3}
+  icon: {fileID: 4408477589242619857, guid: b0511f2c90d98da488d4a95aa8445811, type: 3}
   nameOfWindow: ImagePlayer
   ownBehaviour: {fileID: 4613473408846192810}
   isFocus: 0

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 68fd3c77b4d8f984b9bc693c7928f4f7
+guid: c390b507512667e42adfce868951e803
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8666800577461312727
-    second: TX_pink_minesweeper_0
+      213: -6674378809914839280
+    second: TX_Pink_Cmd_Icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TX_pink_minesweeper_0
+      name: TX_Pink_Cmd_Icon_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 923a4412bc659b780800000000000000
-      internalID: -8666800577461312727
+      spriteID: 01fa1a2b5d7df53a0800000000000000
+      internalID: -6674378809914839280
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TX_pink_minesweeper_0: -8666800577461312727
+      TX_Pink_Cmd_Icon_0: -6674378809914839280
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
