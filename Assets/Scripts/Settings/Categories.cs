@@ -12,6 +12,8 @@ public class Categories : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI textUpdate;
     [SerializeField] Transform buttonUpdate;
+    
+    public MainSceneManager mainSceneManager;
 
     bool loadingOS = false;
 
@@ -54,6 +56,8 @@ public class Categories : MonoBehaviour
     {
         loadingOS = true;
 
+
+        mainSceneManager.asMouse = true;
         buttonUpdate.DOLocalMoveX(1f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCirc);
 
         textUpdate.text = "Chargement de la mise à jour";
