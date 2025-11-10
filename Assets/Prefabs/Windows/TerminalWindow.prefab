@@ -688,10 +688,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d573460e54e6500489a2c3eaab3d05a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: -4007164682430197501, guid: 8c7478427c2cae544972dce07ea4911e, type: 3}
+  icon: {fileID: -6674378809914839280, guid: c390b507512667e42adfce868951e803, type: 3}
   nameOfWindow: Cmd
   ownBehaviour: {fileID: 3366912990757969321}
   isFocus: 0
+  clip: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1 &3774796364526913086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,7 +1343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Window Name
+  m_text: Console
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
