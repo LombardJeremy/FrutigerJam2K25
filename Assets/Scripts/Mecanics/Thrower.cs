@@ -24,6 +24,8 @@ public class Thrower : MonoBehaviour
     bool repositioning = false;
     bool isShooting = false;
 
+    bool isInDialog = false;
+
     float posXbase = 0;
 
     float timeNotTouch = 0;
@@ -33,10 +35,15 @@ public class Thrower : MonoBehaviour
     {
         posXbase = objectToThrow.transform.localPosition.x;
         objectToThrow.gameObject.SetActive(false);
+
+        AssistantBehaviour.instance.onStartDialog.AddListener( () => { isInDialog = true; });
+        AssistantBehaviour.instance.onFinishDialog.AddListener(() => { isInDialog = false; });
     }
 
     void Update()
     {
+        if (isInDialog) return;
+
         HandleInput();
 
         if (repositioning) return;
