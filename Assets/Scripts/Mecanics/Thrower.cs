@@ -2,12 +2,16 @@ using System;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Thrower : MonoBehaviour
 {
 
     [Header("Params")]
     [SerializeField] InteractibleManager intManager;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip throwSound;
+    [SerializeField] AudioClip returnSound;
 
     [Header("Params Thrower")]
     [SerializeField] Rigidbody2D objectToThrow;
@@ -72,6 +76,7 @@ public class Thrower : MonoBehaviour
                     objectReturn = false;
                     repositioning = true;
                     objectToThrow.linearVelocity = Vector2.zero;
+                    StartCoroutine(SoundCoroutine());
                     //objectToThrow.linearVelocity = (transform.position - objectToThrow.transform.position).normalized * speedShoot;
                     objectToThrow.transform.DOLocalMoveX(0, 2f).SetEase(Ease.InOutCirc).OnComplete(() => { AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.RecieveThrow); hasObject = true; repositioning = false; objectToThrow.gameObject.SetActive(false); });
                 }
@@ -84,6 +89,14 @@ public class Thrower : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator SoundCoroutine()
+    {
+        yield return new WaitForSeconds(0.4f);
+        audioSource.Stop();
+        audioSource.clip = returnSound;
+        audioSource.Play();
     }
 
     private void HandleInput()
@@ -141,6 +154,8 @@ public class Thrower : MonoBehaviour
     {
         isShooting = true;
         yield return new WaitForSeconds(timeWaitShoot);
+        audioSource.clip = throwSound;
+        audioSource.Play();
         isShooting = false;
         hasObject = false;
         objectToThrow.gameObject.SetActive(true);

@@ -6,6 +6,9 @@ public class InteractibleManager : MonoBehaviour
 
     public List<Interactible> interactibles;
 
+    public AudioSource audioSource;
+    public AudioClip click;
+
     public bool IsCollidingWithElements(Vector2 position)
     {
         foreach (Interactible interactible in  interactibles)
@@ -13,6 +16,9 @@ public class InteractibleManager : MonoBehaviour
             if (IsInElement(interactible, position))
             {
                 interactible.OnInteraction();
+                audioSource.Stop();
+                audioSource.clip = click;
+                audioSource.Play();
                 return true;
             }
         }
