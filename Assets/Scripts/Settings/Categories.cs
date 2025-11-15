@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -20,7 +21,17 @@ public class Categories : MonoBehaviour
 
     public MainSceneManager mainSceneManager;
 
+    [Header("Background")]
+    [SerializeField] Carousel carouselBackground;
+    [SerializeField] GameObject fxBackground;
+    [SerializeField] TextMeshProUGUI textButtonFxBackground;
+    [SerializeField] bool fxActivated = true;
+    [SerializeField] string textFxActivated;
+    [SerializeField] string textFxDeactivated;
+
     bool loadingOS = false;
+
+    public bool loading = false;
 
     int sec = 0;
 
@@ -32,11 +43,22 @@ public class Categories : MonoBehaviour
 
     void Start()
     {
-        
+        DateTime date = DateTime.Parse(TaskBarManager.instance.GetDate());
+        childs.GetChild(1).GetComponentsInChildren<TextMeshProUGUI>()[1].text = date.Day.ToString();
+        childs.GetChild(1).GetComponentsInChildren<TextMeshProUGUI>()[3].text = date.Month.ToString();
+        childs.GetChild(1).GetComponentsInChildren<TextMeshProUGUI>()[5].text = date.Year.ToString();
+
+        if (fxActivated) textButtonFxBackground.text = textFxActivated;
+        else textButtonFxBackground.text = textFxDeactivated;
+
+        fxBackground.SetActive(fxActivated);
+
     }
 
     void Update()
     {
+        if (loading) return;
+
         switch(sec)
         {
             case 1:
@@ -44,9 +66,46 @@ public class Categories : MonoBehaviour
                 break;
             case 2:
                 SoundInput(); break;
+            case 3:
+                BackgroundInput(); break;
             case 4:
                 UpdateForOS(); break;
         }
+    }
+
+    private void BackgroundInput()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            fxActivated = !fxActivated;
+
+            if (fxActivated) textButtonFxBackground.text = textFxActivated;
+            else textButtonFxBackground.text = textFxDeactivated;
+
+            fxBackground.SetActive(fxActivated);
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            int index = carouselBackground.GetSelectedIndex();
+            carouselBackground.Right();
+            int diff = carouselBackground.GetSelectedIndex() - index;
+
+            //if (diff != 0)
+            //    audioSource.Play();
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            int index = carouselBackground.GetSelectedIndex();
+            carouselBackground.Left();
+            int diff = carouselBackground.GetSelectedIndex() - index;
+
+            //if (diff != 0)
+            //    audioSource.Play();
+        }
+
+
     }
 
     void UpdateForOS()
@@ -117,7 +176,7 @@ public class Categories : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
             childs.GetChild(sec).GetComponent<Carousel>().Right();
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
 
             switch(childs.GetChild(sec).GetComponent<Carousel>().GetSelectedIndex())
@@ -133,8 +192,9 @@ public class Categories : MonoBehaviour
                     break;
             }
 
+            TaskBarManager.instance.SetDate(childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[1].text + "/" + childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[3].text + "/" + childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[5].text);
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             switch (childs.GetChild(sec).GetComponent<Carousel>().GetSelectedIndex())
             {
@@ -148,6 +208,8 @@ public class Categories : MonoBehaviour
                     childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[5].text = (Mathf.Clamp(int.Parse(childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[5].text) - 1, 0, 2025)).ToString();
                     break;
             }
+
+            TaskBarManager.instance.SetDate(childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[1].text + "/" + childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[3].text + "/" + childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[5].text);
         }
     }
 

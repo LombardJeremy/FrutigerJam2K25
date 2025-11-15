@@ -76,4 +76,14 @@ public class TaskBarManager : MonoBehaviour
         now = now.AddYears(value);
         date.text = now.ToString("dd/MM/yyyy");
     }
+
+    public string GetDate()
+    {
+        return date.text;
+    }
+
+    public void SetDate(string value)
+    {
+        date.text = value;
+    }
 }

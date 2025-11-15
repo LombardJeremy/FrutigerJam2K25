@@ -92,22 +92,25 @@ public class SettingsManager : MonoBehaviour
     {
         if (!canChange) return;
 
+        categories.loading = true;
+
         categories.HideOthers(carousel.GetSelectedIndex());
 
         canChange = false;
         isInCategory = true;
         categories.transform.DOLocalMoveX(300, 0.5f).SetEase(Ease.InOutCirc);
-        carousel.transform.DOLocalMoveX(-300, 0.5f).SetEase(Ease.InOutCirc).OnComplete( () => { canChange = true; });
+        carousel.transform.DOLocalMoveX(-300, 0.5f).SetEase(Ease.InOutCirc).OnComplete( () => { canChange = true; categories.loading = false; });
     }
 
     void OnHide()
     {
         if (!canChange) return;
 
+        categories.loading = true;
         canChange = false;
         isInCategory = false;
         categories.transform.DOLocalMoveX(posXCategories, 0.5f).SetEase(Ease.InOutCirc);
-        carousel.transform.DOLocalMoveX(100, 0.5f).SetEase(Ease.InOutCirc).OnComplete(() => { canChange = true; });
+        carousel.transform.DOLocalMoveX(100, 0.5f).SetEase(Ease.InOutCirc).OnComplete(() => { canChange = true; categories.loading = false; });
     }
 
 }
