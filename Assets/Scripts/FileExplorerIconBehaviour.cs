@@ -24,11 +24,11 @@ public class FileExplorerIconBehaviour : MonoBehaviour
         if (typeOfFile == TypeOfFile.FolderImage)
         {
             GameObject child = Instantiate(_windowController.windowExplorerImagePrefab, _windowController._data.ownBehaviour.canvas.transform);
-            child.transform.position = new Vector3(child.transform.position.x + 15, child.transform.position.y + 10, child.transform.position.z);
+            child.transform.position = new Vector3(child.transform.position.x + 3, child.transform.position.y + 1, child.transform.position.z);
         } else if (typeOfFile == TypeOfFile.FolderMusic)
         {
             GameObject child = Instantiate(_windowController.windowExplorerMusicPrefab, _windowController._data.ownBehaviour.canvas.transform);
-            child.transform.position = new Vector3(child.transform.position.x + 15, child.transform.position.y + 10, child.transform.position.z);
+            child.transform.position = new Vector3(child.transform.position.x + 3, child.transform.position.y + 1, child.transform.position.z);
         } else if (typeOfFile == TypeOfFile.Music)
         {
             GameObject child = Instantiate(_windowController.musicReader, _windowController._data.ownBehaviour.canvas.transform);
