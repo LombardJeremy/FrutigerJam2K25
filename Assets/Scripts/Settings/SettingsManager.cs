@@ -68,12 +68,12 @@ public class SettingsManager : MonoBehaviour
             if (diff != 0)
                 audioSource.Play();
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.Return))
         {
             if (isInCategory) return;
             OnAppear();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isInCategory)
             {
@@ -83,6 +83,9 @@ public class SettingsManager : MonoBehaviour
             }
 
             if (!isInCategory) return;
+
+            if (categories.IsLoadingOs()) return;
+
             OnHide();   
 
         }
@@ -92,25 +95,23 @@ public class SettingsManager : MonoBehaviour
     {
         if (!canChange) return;
 
-        categories.loading = true;
-
         categories.HideOthers(carousel.GetSelectedIndex());
 
         canChange = false;
         isInCategory = true;
         categories.transform.DOLocalMoveX(300, 0.5f).SetEase(Ease.InOutCirc);
-        carousel.transform.DOLocalMoveX(-300, 0.5f).SetEase(Ease.InOutCirc).OnComplete( () => { canChange = true; categories.loading = false; });
+        carousel.transform.DOLocalMoveX(-300, 0.5f).SetEase(Ease.InOutCirc).OnComplete( () => { canChange = true; categories.isInCategory = true; });
     }
 
     void OnHide()
     {
         if (!canChange) return;
 
-        categories.loading = true;
+        categories.isInCategory = false;
         canChange = false;
         isInCategory = false;
         categories.transform.DOLocalMoveX(posXCategories, 0.5f).SetEase(Ease.InOutCirc);
-        carousel.transform.DOLocalMoveX(100, 0.5f).SetEase(Ease.InOutCirc).OnComplete(() => { canChange = true; categories.loading = false; });
+        carousel.transform.DOLocalMoveX(100, 0.5f).SetEase(Ease.InOutCirc).OnComplete(() => { canChange = true; });
     }
 
 }

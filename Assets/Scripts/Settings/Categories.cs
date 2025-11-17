@@ -30,8 +30,8 @@ public class Categories : MonoBehaviour
     [SerializeField] string textFxDeactivated;
 
     bool loadingOS = false;
-
-    public bool loading = false;
+    
+    public bool isInCategory = false;
 
     int sec = 0;
 
@@ -57,7 +57,7 @@ public class Categories : MonoBehaviour
 
     void Update()
     {
-        if (loading) return;
+        if (!isInCategory) return;
 
         switch(sec)
         {
@@ -76,7 +76,7 @@ public class Categories : MonoBehaviour
     private void BackgroundInput()
     {
         
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             fxActivated = !fxActivated;
 
@@ -110,7 +110,7 @@ public class Categories : MonoBehaviour
 
     void UpdateForOS()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !loadingOS)
+        if (Input.GetKeyDown(KeyCode.Return) && !loadingOS)
         {
             StartCoroutine(UpdateOSCoroutine());
         }
@@ -153,7 +153,7 @@ public class Categories : MonoBehaviour
 
         PopupWindow.Instance.SetPopup("Souris activé !");
         buttonUpdate.GetComponent<Image>().DOFade(0, 0.5f);
-        buttonUpdate.GetComponentInChildren<TextMeshProUGUI>().DOFade(0, 0.5f);
+        buttonUpdate.GetComponentInChildren<TextMeshProUGUI>().DOFade(0, 0.5f).OnComplete( () => { loadingOS = false; });
 
         GameManager.instance.minesweeper.SetActive(true);
     }
@@ -161,11 +161,11 @@ public class Categories : MonoBehaviour
 
     void SoundInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             soundSlider.value += 0.1f;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             soundSlider.value -= 0.1f;
         }
@@ -175,6 +175,8 @@ public class Categories : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
             childs.GetChild(sec).GetComponent<Carousel>().Right();
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            childs.GetChild(sec).GetComponent<Carousel>().Left();
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -223,5 +225,7 @@ public class Categories : MonoBehaviour
             else childs.GetChild(i).GetComponent<CanvasGroup>().alpha = 1;
         }
     }
+
+    public bool IsLoadingOs() => loadingOS;
 
 }
