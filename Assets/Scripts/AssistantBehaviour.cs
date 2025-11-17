@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -23,6 +24,10 @@ public class AssistantBehaviour : MonoBehaviour
 
     public UnityEvent onStartDialog = new UnityEvent();
     public UnityEvent onFinishDialog = new UnityEvent();
+    public UnityEvent onMoveStart = new UnityEvent();
+    public UnityEvent onMoveFinish = new UnityEvent();
+    
+    public float speedLooking = 100f;
 
     List<string> dialogs = new List<string>();
     int currentIndexDialog = 0;
@@ -83,7 +88,11 @@ public class AssistantBehaviour : MonoBehaviour
 
     public void LookAt(Vector3 pos)
     {
+        Quaternion prevRot = minny.rotation;
         minny.LookAt(pos);
+        Quaternion newRot = Quaternion.Euler(0, 90 + minny.rotation.eulerAngles.y, 0);
+        minny.rotation = prevRot;
+        minny.DORotate(newRot.eulerAngles, Quaternion.Angle(prevRot, newRot) / speedLooking).SetEase(Ease.InOutCirc);
         minny.rotation = Quaternion.Euler(0, 90 + minny.rotation.eulerAngles.y, 0);
     }
 
@@ -137,7 +146,9 @@ public class AssistantBehaviour : MonoBehaviour
     public void MoveTo(Vector3 pos)
     {
         ChangeState(AssistantState.Running);
-        transform.DOMove(pos, 3f).SetEase(Ease.InOutSine).OnComplete( () => { ChangeState(AssistantState.Idle); });
+        LookAt(pos);
+        onMoveStart.Invoke();
+        minny.DOMove(pos, 3f).SetEase(Ease.Linear).OnComplete( () => { ChangeState(AssistantState.Idle); onMoveFinish.Invoke(); });
     }
 
     public void SetAndPrintText(string text)
