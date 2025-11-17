@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -22,6 +23,12 @@ public class AssistantBehaviour : MonoBehaviour
 
     public UnityEvent onStartDialog = new UnityEvent();
     public UnityEvent onFinishDialog = new UnityEvent();
+
+    List<string> dialogs = new List<string>();
+    int currentIndexDialog = 0;
+    bool printingDialog = false;
+
+    bool pressedWhilePrinting = false;
 
     public Transform minny;
 
@@ -53,6 +60,25 @@ public class AssistantBehaviour : MonoBehaviour
 
         speechBox.localPosition = localPoint;
         */
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && dialogs.Count > 0)
+        {
+            if (!printingDialog)
+            {
+                currentIndexDialog++;
+                if (currentIndexDialog > dialogs.Count - 1)
+                    OnEndDialog();
+                else
+                    SetAndPrintText(dialogs[currentIndexDialog]);
+            }
+            else
+            {
+                pressedWhilePrinting = true;
+            }
+        }
     }
 
     public void LookAt(Vector3 pos)
@@ -116,6 +142,7 @@ public class AssistantBehaviour : MonoBehaviour
 
     public void SetAndPrintText(string text)
     {
+        pressedWhilePrinting = false;
         speechBoxText.text = text;
         if (!speechBox.gameObject.activeSelf)
         {
@@ -128,8 +155,26 @@ public class AssistantBehaviour : MonoBehaviour
         ChangeState(AssistantState.Speakin);
     }
 
+    public void SetDialogsAndPlay(List<string> newDialogs)
+    {
+        dialogs = newDialogs;
+        currentIndexDialog = 0;
+
+        onStartDialog.Invoke();
+
+        StartCoroutine(PlayCoroutine());
+    }
+
+    private IEnumerator PlayCoroutine()
+    {
+        SetAndPrintText("");
+        yield return new WaitForSeconds(0.1f);
+        SetAndPrintText(dialogs[currentIndexDialog]);
+    }
+
     private IEnumerator TypeText(string fullText)
     {
+        printingDialog = true;
         speechBoxText.text = fullText;
         speechBoxText.maxVisibleCharacters = 0;
 
@@ -137,10 +182,21 @@ public class AssistantBehaviour : MonoBehaviour
         {
             if (fullText != "") audioSource.Play();
             speechBoxText.maxVisibleCharacters = i;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(pressedWhilePrinting ? .01f : .05f);
         }
 
+        printingDialog = false;
         ChangeState(AssistantState.Idle);
+    }
+
+    private void OnEndDialog()
+    {
+        dialogs = new List<string>();
+        currentIndexDialog = 0;
+        speechBoxText.text = "";
+        speechBox.gameObject.SetActive(false);
+        ChangeState(AssistantState.Idle);
+        onFinishDialog.Invoke();
     }
 
     public enum AssistantState
