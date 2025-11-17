@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StartDialog : MonoBehaviour
@@ -10,6 +11,9 @@ public class StartDialog : MonoBehaviour
     bool done = false;
 
     private bool canDialogue = true;
+
+    [SerializeField] List<string> startDialogs;
+    [SerializeField] List<string> taskbarUnlockDialogs;
 
     private void Start()
     {
@@ -36,6 +40,14 @@ public class StartDialog : MonoBehaviour
 
     IEnumerator Dialog()
     {
+
+        assistant.LookAt(Vector3.zero);
+        assistant.SetAndPrintText("");
+        assistant.onStartDialog.Invoke();
+        AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Start);
+        yield return new WaitForSeconds(12.44f);
+        AssistantBehaviour.instance.SetDialogsAndPlay(startDialogs);
+        /*
         AssistantBehaviour.instance.onStartDialog.Invoke();
         assistant.LookAt(Vector3.zero);
         assistant.SetAndPrintText("");
@@ -55,12 +67,17 @@ public class StartDialog : MonoBehaviour
         yield return new WaitForSeconds(5f);
         AssistantBehaviour.instance.onFinishDialog.Invoke();
         AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
-
+        */
         // END dialog start
     }
     
     IEnumerator TaskBarDialog()
     {
+
+        AssistantBehaviour.instance.SetDialogsAndPlay(taskbarUnlockDialogs);
+
+        yield return null;
+        /*
         AssistantBehaviour.instance.onStartDialog.Invoke();
         assistant.LookAt(Vector3.zero);
         assistant.SetAndPrintText("");
@@ -73,7 +90,7 @@ public class StartDialog : MonoBehaviour
         yield return new WaitForSeconds(3f);
         AssistantBehaviour.instance.onFinishDialog.Invoke();
         AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Idle);
-        
+        */
         // END dialog
     }
 

@@ -11246,6 +11246,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assistant: {fileID: 1120441265}
+  startDialogs:
+  - "Hellooooooo \xE7a fait longtemps non ?"
+  - "Hmmmmm cette endroit est un peu en ruine, il faudrait r\xE9parer tout ceci"
+  - "Tu pourrais m'aider... Mais je viens de voir que le driver pour la souris est
+    cass\xE9"
+  - Tiens, je vais lancer ta souris, ce sera simple comme bonjour avec cette solution
+    !
+  - "Vise avec les fl\xE8ches directionnelles et tire avec la barre espace."
+  - "Appuis a nouveau sur la barre espace lorsque ta souris est sur l'element souhait\xE9
+    !"
+  taskbarUnlockDialogs:
+  - "La barre des t\xE2ches est de nouveau accessible ! Tr\xE8s bonne nouvelle."
+  - "On devrait pouvoir acc\xE9der aux param\xE8tres."
+  - Fouille donc dedans, fais comme chez toi!
 --- !u!1 &1895852894
 GameObject:
   m_ObjectHideFlags: 0
