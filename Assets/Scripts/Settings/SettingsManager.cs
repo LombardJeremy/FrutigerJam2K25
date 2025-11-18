@@ -100,7 +100,7 @@ public class SettingsManager : MonoBehaviour
         canChange = false;
         isInCategory = true;
         categories.transform.DOLocalMoveX(300, 0.5f).SetEase(Ease.InOutCirc);
-        carousel.transform.DOLocalMoveX(-300, 0.5f).SetEase(Ease.InOutCirc).OnComplete( () => { canChange = true; categories.isInCategory = true; });
+        carousel.transform.DOLocalMoveX(-200, 0.5f).SetEase(Ease.InOutCirc).OnComplete( () => { canChange = true; categories.isInCategory = true; });
     }
 
     void OnHide()
@@ -111,7 +111,7 @@ public class SettingsManager : MonoBehaviour
         canChange = false;
         isInCategory = false;
         categories.transform.DOLocalMoveX(posXCategories, 0.5f).SetEase(Ease.InOutCirc);
-        carousel.transform.DOLocalMoveX(100, 0.5f).SetEase(Ease.InOutCirc).OnComplete(() => { canChange = true; });
+        carousel.transform.DOLocalMoveX(200, 0.5f).SetEase(Ease.InOutCirc).OnComplete(() => { canChange = true; });
     }
 
 }

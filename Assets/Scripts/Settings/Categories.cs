@@ -85,7 +85,8 @@ public class Categories : MonoBehaviour
 
             fxBackground.SetActive(fxActivated);
         }
-
+        
+        /*
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             int index = carouselBackground.GetSelectedIndex();
@@ -104,6 +105,7 @@ public class Categories : MonoBehaviour
             //if (diff != 0)
             //    audioSource.Play();
         }
+        */
 
 
     }

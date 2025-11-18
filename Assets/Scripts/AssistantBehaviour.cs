@@ -38,6 +38,8 @@ public class AssistantBehaviour : MonoBehaviour
     public Transform minny;
 
     private Coroutine typingCoroutine;
+    private Coroutine soundTypingCoroutine;
+
     void Awake()
     {
         if (instance == null)
@@ -86,13 +88,17 @@ public class AssistantBehaviour : MonoBehaviour
         }
     }
 
-    public void LookAt(Vector3 pos)
+    public void LookAt(Vector3 pos, bool instant = false)
     {
         Quaternion prevRot = minny.rotation;
         minny.LookAt(pos);
-        Quaternion newRot = Quaternion.Euler(0, 90 + minny.rotation.eulerAngles.y, 0);
+        Quaternion newRot = Quaternion.Euler(0, minny.rotation.eulerAngles.y, 0);
         minny.rotation = prevRot;
-        minny.DORotate(newRot.eulerAngles, Quaternion.Angle(prevRot, newRot) / speedLooking).SetEase(Ease.InOutCirc);
+        if (instant)
+            minny.rotation = newRot;
+        else
+            minny.rotation = Quaternion.Lerp(prevRot, newRot, Quaternion.Angle(prevRot, newRot) / speedLooking);
+
         minny.rotation = Quaternion.Euler(0, 90 + minny.rotation.eulerAngles.y, 0);
     }
 
@@ -163,6 +169,8 @@ public class AssistantBehaviour : MonoBehaviour
             StopCoroutine(typingCoroutine);
 
         typingCoroutine = StartCoroutine(TypeText(text));
+        soundTypingCoroutine = StartCoroutine(SoundType());
+
         ChangeState(AssistantState.Speakin);
     }
 
@@ -183,6 +191,15 @@ public class AssistantBehaviour : MonoBehaviour
         SetAndPrintText(dialogs[currentIndexDialog]);
     }
 
+    private IEnumerator SoundType()
+    {
+        for (int i = 0; i < speechBoxText.text.Length; i++)
+        {
+            if (speechBoxText.text != "") audioSource.Play();
+            yield return new WaitForSeconds(.05f);
+        }
+    }
+
     private IEnumerator TypeText(string fullText)
     {
         printingDialog = true;
@@ -191,12 +208,15 @@ public class AssistantBehaviour : MonoBehaviour
 
         for (int i = 0; i <= fullText.Length; i++)
         {
-            if (fullText != "") audioSource.Play();
             speechBoxText.maxVisibleCharacters = i;
             yield return new WaitForSeconds(pressedWhilePrinting ? .01f : .05f);
         }
 
         printingDialog = false;
+        
+        if (soundTypingCoroutine != null)
+            StopCoroutine(soundTypingCoroutine);
+
         ChangeState(AssistantState.Idle);
     }
 

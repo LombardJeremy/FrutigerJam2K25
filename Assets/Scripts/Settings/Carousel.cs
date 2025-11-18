@@ -53,11 +53,11 @@ public class Carousel : MonoBehaviour
 				Vector2 targetPos = Vector2.zero;
 
 				if (invertAxis)
-                    //targetPos = new Vector2(x, y - wraparoudHeight) - childsParent.GetChild(i).GetComponent<RectTransform>().rect.size / 2f;
-                    targetPos = new Vector2(x, y - wraparoudHeight) - size / 2f;
+                    targetPos = new Vector2(x, y - wraparoudHeight) - childsParent.GetChild(i).GetComponent<RectTransform>().rect.size * childsParent.GetChild(i).lossyScale / 2f;
+                    //targetPos = new Vector2(x, y - wraparoudHeight) - size / 2f;
                 else
-                    //targetPos = new Vector2(y, x - wraparoudHeight) - childsParent.GetChild(i).GetComponent<RectTransform>().rect.size / 2f;
-                    targetPos = new Vector2(y, x - wraparoudHeight) - size / 2f;
+                    targetPos = new Vector2(y, x - wraparoudHeight) - childsParent.GetChild(i).GetComponent<RectTransform>().rect.size * childsParent.GetChild(i).lossyScale / 2f;
+                    //targetPos = new Vector2(y, x - wraparoudHeight) - size / 2f;
 
                 childsParent.GetChild(i).localPosition = Vector2.Lerp(childsParent.GetChild(i).localPosition, targetPos, smoothing_speed * Time.deltaTime);
 			}
@@ -68,12 +68,12 @@ public class Carousel : MonoBehaviour
 					float posY = 0;
 					if (i > 0)
 					{
-                        //posY = childsParent.GetChild(i - 1).localPosition.y + childsParent.GetChild(i - 1).GetComponent<RectTransform>().rect.size.y + spacing;
-                        posY = childsParent.GetChild(i - 1).localPosition.y + size.y + spacing;
+                        posY = childsParent.GetChild(i - 1).localPosition.y + childsParent.GetChild(i - 1).GetComponent<RectTransform>().rect.size.y * childsParent.GetChild(i).lossyScale.y + spacing;
+                        //posY = childsParent.GetChild(i - 1).localPosition.y + size.y + spacing;
                     }
 
-                    //childsParent.GetChild(i).localPosition = new Vector2(-childsParent.GetChild(i).GetComponent<RectTransform>().rect.size.x, posY);
-                    childsParent.GetChild(i).localPosition = new Vector2(-size.y, posY);
+                    childsParent.GetChild(i).localPosition = new Vector2(-childsParent.GetChild(i).GetComponent<RectTransform>().rect.size.x * childsParent.GetChild(i).lossyScale.x, posY);
+                    //childsParent.GetChild(i).localPosition = new Vector2(-size.y, posY);
 
                 }
 				else
@@ -81,18 +81,18 @@ public class Carousel : MonoBehaviour
 					float posX = 0;
 					if (i > 0)
 					{
-						//posX = childsParent.GetChild(i - 1).localPosition.x + childsParent.GetChild(i - 1).GetComponent<RectTransform>().rect.size.x + spacing;
-                        posX = childsParent.GetChild(i - 1).localPosition.x + size.x + spacing;
+						posX = childsParent.GetChild(i - 1).localPosition.x + childsParent.GetChild(i - 1).GetComponent<RectTransform>().rect.size.x * childsParent.GetChild(i).lossyScale.x + spacing;
+                        //posX = childsParent.GetChild(i - 1).localPosition.x + size.x + spacing;
                     }
 
-                    //childsParent.GetChild(i).localPosition = new Vector2(posX, -childsParent.GetChild(i).GetComponent<RectTransform>().rect.size.y);
-                    childsParent.GetChild(i).localPosition = new Vector2(posX, -childsParent.GetChild(i).GetComponent<RectTransform>().sizeDelta.y);
+                    childsParent.GetChild(i).localPosition = new Vector2(posX, -childsParent.GetChild(i).GetComponent<RectTransform>().rect.size.y * childsParent.GetChild(i).lossyScale.y);
+                    //childsParent.GetChild(i).localPosition = new Vector2(posX, -childsParent.GetChild(i).GetComponent<RectTransform>().sizeDelta.y);
 
                 }
 			}
 
-            //childsParent.GetChild(i).GetComponent<RectTransform>().pivot = childsParent.GetChild(i).GetComponent<RectTransform>().rect.size / 2f;
-            childsParent.GetChild(i).GetComponent<RectTransform>().pivot = size / 2f;
+            //childsParent.GetChild(i).GetComponent<RectTransform>().pivot = childsParent.GetChild(i).GetComponent<RectTransform>().rect.size * childsParent.GetChild(i).lossyScale / 2f;
+            //childsParent.GetChild(i).GetComponent<RectTransform>().pivot = size / 2f;
             float targetScale = 1f - (scale_strength * Mathf.Abs(i - selectedIndex));
 			targetScale = Mathf.Clamp(targetScale, scale_min, 1f);
 			childsParent.GetChild(i).localScale = Vector2.Lerp(childsParent.GetChild(i).localScale, Vector2.one * targetScale, smoothing_speed * Time.deltaTime);
@@ -126,11 +126,11 @@ public class Carousel : MonoBehaviour
 			else
 			{
 				if (invertAxis)
-                    //childsParent.localPosition = new Vector3(childsParent.localPosition.x, Mathf.Lerp(childsParent.localPosition.y, -(childsParent.GetChild(selectedIndex).localPosition.y + childsParent.GetChild(selectedIndex).GetComponent<RectTransform>().rect.size.y / 2f), smoothing_speed * Time.deltaTime), childsParent.localPosition.z);
-                    childsParent.localPosition = new Vector3(childsParent.localPosition.x, Mathf.Lerp(childsParent.localPosition.y, -(childsParent.GetChild(selectedIndex).localPosition.y + childsParent.GetChild(selectedIndex).GetComponent<RectTransform>().sizeDelta.y / 2f), smoothing_speed * Time.deltaTime), childsParent.localPosition.z);
+                    childsParent.localPosition = new Vector3(childsParent.localPosition.x, Mathf.Lerp(childsParent.localPosition.y, -(childsParent.GetChild(selectedIndex).localPosition.y + childsParent.GetChild(selectedIndex).GetComponent<RectTransform>().rect.size.y * childsParent.GetChild(i).lossyScale.y / 2f), smoothing_speed * Time.deltaTime), childsParent.localPosition.z);
+                    //childsParent.localPosition = new Vector3(childsParent.localPosition.x, Mathf.Lerp(childsParent.localPosition.y, -(childsParent.GetChild(selectedIndex).localPosition.y + childsParent.GetChild(selectedIndex).GetComponent<RectTransform>().sizeDelta.y / 2f), smoothing_speed * Time.deltaTime), childsParent.localPosition.z);
                 else
-                    //childsParent.localPosition = new Vector3(Mathf.Lerp(childsParent.localPosition.x, -(childsParent.GetChild(selectedIndex).localPosition.x + childsParent.GetChild(selectedIndex).GetComponent<RectTransform>().rect.size.x/2f), smoothing_speed * Time.deltaTime), childsParent.localPosition.y, childsParent.localPosition.z);
-                    childsParent.localPosition = new Vector3(Mathf.Lerp(childsParent.localPosition.x, -(childsParent.GetChild(selectedIndex).localPosition.x + childsParent.GetChild(selectedIndex).GetComponent<RectTransform>().sizeDelta.x / 2f), smoothing_speed * Time.deltaTime), childsParent.localPosition.y, childsParent.localPosition.z);
+                    childsParent.localPosition = new Vector3(Mathf.Lerp(childsParent.localPosition.x, -(childsParent.GetChild(selectedIndex).localPosition.x + childsParent.GetChild(selectedIndex).GetComponent<RectTransform>().rect.size.x * childsParent.GetChild(i).lossyScale.x /2f), smoothing_speed * Time.deltaTime), childsParent.localPosition.y, childsParent.localPosition.z);
+                    //childsParent.localPosition = new Vector3(Mathf.Lerp(childsParent.localPosition.x, -(childsParent.GetChild(selectedIndex).localPosition.x + childsParent.GetChild(selectedIndex).GetComponent<RectTransform>().sizeDelta.x / 2f), smoothing_speed * Time.deltaTime), childsParent.localPosition.y, childsParent.localPosition.z);
             }
 
 		}

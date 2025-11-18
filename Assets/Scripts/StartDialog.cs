@@ -41,7 +41,7 @@ public class StartDialog : MonoBehaviour
     IEnumerator Dialog()
     {
 
-        assistant.LookAt(Vector3.zero);
+        assistant.LookAt(Vector3.zero, true);
         assistant.SetAndPrintText("");
         assistant.onStartDialog.Invoke();
         AssistantBehaviour.instance.ChangeState(AssistantBehaviour.AssistantState.Start);
