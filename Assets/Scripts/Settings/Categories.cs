@@ -28,6 +28,11 @@ public class Categories : MonoBehaviour
     [SerializeField] bool fxActivated = true;
     [SerializeField] string textFxActivated;
     [SerializeField] string textFxDeactivated;
+    [SerializeField] Material backgroundMaterial;
+
+    Color backgroundColorDownStart;
+    Color backgroundColorUpStart;
+
 
     bool loadingOS = false;
     
@@ -53,6 +58,11 @@ public class Categories : MonoBehaviour
 
         fxBackground.SetActive(fxActivated);
 
+        backgroundColorDownStart = backgroundMaterial.GetColor("_ColorDown");
+        backgroundColorUpStart = backgroundMaterial.GetColor("_ColorUp");
+        
+        //backgroundMaterial.SetColor("_ColorDown", Color.blue);
+        //backgroundMaterial.SetColor("_ColorUp", Color.red);
     }
 
     void Update()
@@ -230,4 +240,10 @@ public class Categories : MonoBehaviour
 
     public bool IsLoadingOs() => loadingOS;
 
+    private void OnDestroy()
+    {
+        print("Change background to normal");
+        backgroundMaterial.SetColor("_ColorDown", backgroundColorDownStart);
+        backgroundMaterial.SetColor("_ColorUp", backgroundColorUpStart);
+    }
 }

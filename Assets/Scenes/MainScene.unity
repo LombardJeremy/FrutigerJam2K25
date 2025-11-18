@@ -11924,6 +11924,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1895852900}
     - target: {fileID: 8273384205051639729, guid: b65ec00712393a84d905c30333b0e887, type: 3}
+      propertyPath: backgroundMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 4070955ef7d4ca548a5fda3400da03c4, type: 2}
+    - target: {fileID: 8273384205051639729, guid: b65ec00712393a84d905c30333b0e887, type: 3}
       propertyPath: carouselBackground
       value: 
       objectReference: {fileID: 484916491}
