@@ -47,7 +47,7 @@ public class WindowBehaviour : MonoBehaviour,
 
     IEnumerator CloseAnimation()
     {
-        mainParentTransform.DOScale(0f, 0.5f).SetEase(Ease.InOutSine);
+        mainParentTransform.DOScale(0f, 0.5f).SetEase(Ease.OutQuint);
         yield return new WaitForSeconds(0.7f);
         if (taskBarIcon != null)
         {

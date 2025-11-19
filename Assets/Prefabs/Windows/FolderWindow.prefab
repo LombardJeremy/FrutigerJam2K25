@@ -1223,8 +1223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 0}
-  horizontalElements: 5
-  verticalElements: 2
+  horizontalElements: 2
+  verticalElements: 1
   windowExplorerMusicPrefab: {fileID: 8897178856660468665, guid: 2e5d323a6be38aa46b5c05472321c640, type: 3}
   windowExplorerImagePrefab: {fileID: 8897178856660468665, guid: 74e4bdcd42eb32f469f7ed230a1bc645, type: 3}
   musicReader: {fileID: 7430096033999533622, guid: a783bb639491f4c4195d86126c2eaa2a, type: 3}

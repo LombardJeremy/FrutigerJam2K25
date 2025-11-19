@@ -10,7 +10,7 @@ public class DoubleClick : MonoBehaviour, IPointerClickHandler
     public float doubleClickThreshold = 0.3f;
 
     [Tooltip("Événement déclenché quand le bouton est double-cliqué")]
-    public UnityEvent onDoubleClick;
+    public UnityEvent onDoubleClick = new UnityEvent();
 
     private float lastClickTime = -1f;
 
@@ -35,6 +35,6 @@ public class DoubleClick : MonoBehaviour, IPointerClickHandler
     public void OnDoubleClick()
     {
         // Animation dotween ?
-        onDoubleClick?.Invoke();
+        onDoubleClick.Invoke();
     }
 }

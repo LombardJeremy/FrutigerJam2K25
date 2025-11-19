@@ -138,9 +138,9 @@ MonoBehaviour:
   onDoubleClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8994546437675915823}
-        m_TargetAssemblyTypeName: DoubleClick, Assembly-CSharp
-        m_MethodName: OnDoubleClick
+      - m_Target: {fileID: 900976882946622010}
+        m_TargetAssemblyTypeName: FileExplorerIconBehaviour, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a693ee4eb33587499518607b59c02f0, type: 3}
   typeOfFile: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: d9782f4f8baf0914480769740196dc66, type: 3}
   sprite: {fileID: 0}
 --- !u!1 &552753526012372643
 GameObject:
@@ -304,9 +304,9 @@ MonoBehaviour:
   onDoubleClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 311003575590410480}
-        m_TargetAssemblyTypeName: DoubleClick, Assembly-CSharp
-        m_MethodName: OnDoubleClick
+      - m_Target: {fileID: 3405082650245033279}
+        m_TargetAssemblyTypeName: FileExplorerIconBehaviour, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a693ee4eb33587499518607b59c02f0, type: 3}
   typeOfFile: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 2817d00902e58994eaec6589c1e9b0ab, type: 3}
   sprite: {fileID: 0}
 --- !u!1 &1157662394791963507
 GameObject:
@@ -496,7 +496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a693ee4eb33587499518607b59c02f0, type: 3}
   typeOfFile: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 30b182b328c3bb54391e8554a6cdf5f4, type: 3}
   sprite: {fileID: 0}
 --- !u!1 &1566937034992058949
 GameObject:
@@ -807,9 +807,9 @@ MonoBehaviour:
   onDoubleClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6788089364057129910}
-        m_TargetAssemblyTypeName: DoubleClick, Assembly-CSharp
-        m_MethodName: OnDoubleClick
+      - m_Target: {fileID: 8883232942750501170}
+        m_TargetAssemblyTypeName: FileExplorerIconBehaviour, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -833,7 +833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a693ee4eb33587499518607b59c02f0, type: 3}
   typeOfFile: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 3d681577a2c6ba14cb968e58528a3840, type: 3}
   sprite: {fileID: 0}
 --- !u!1 &3380420944623391094
 GameObject:
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a693ee4eb33587499518607b59c02f0, type: 3}
   typeOfFile: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: a3e075397d78a2b4795699770880cfb5, type: 3}
   sprite: {fileID: 0}
 --- !u!1 &3759852095128010792
 GameObject:
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a693ee4eb33587499518607b59c02f0, type: 3}
   typeOfFile: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 71523e21048d9c64e8aa3b1d705eaef6, type: 3}
   sprite: {fileID: 0}
 --- !u!1 &5080987291914309034
 GameObject:
@@ -1909,9 +1909,9 @@ MonoBehaviour:
   onDoubleClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3193782551277484032}
-        m_TargetAssemblyTypeName: DoubleClick, Assembly-CSharp
-        m_MethodName: OnDoubleClick
+      - m_Target: {fileID: 2952290520882615066}
+        m_TargetAssemblyTypeName: FileExplorerIconBehaviour, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1935,7 +1935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a693ee4eb33587499518607b59c02f0, type: 3}
   typeOfFile: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: c834155957a149347b3d3763087643fe, type: 3}
   sprite: {fileID: 0}
 --- !u!1 &7172045399009493059
 GameObject:
@@ -2075,9 +2075,9 @@ MonoBehaviour:
   onDoubleClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7504112650874018503}
-        m_TargetAssemblyTypeName: DoubleClick, Assembly-CSharp
-        m_MethodName: OnDoubleClick
+      - m_Target: {fileID: 6369529265945620295}
+        m_TargetAssemblyTypeName: FileExplorerIconBehaviour, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2101,7 +2101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a693ee4eb33587499518607b59c02f0, type: 3}
   typeOfFile: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: d58f23447442bf6449d021c1ccdbefe9, type: 3}
   sprite: {fileID: 0}
 --- !u!1 &7449073987860095991
 GameObject:
@@ -2229,10 +2229,10 @@ MonoBehaviour:
   _data: {fileID: 0}
   horizontalElements: 5
   verticalElements: 2
-  windowExplorerMusicPrefab: {fileID: 0}
-  windowExplorerImagePrefab: {fileID: 0}
-  musicReader: {fileID: 0}
-  imageReader: {fileID: 0}
+  windowExplorerMusicPrefab: {fileID: 8897178856660468665}
+  windowExplorerImagePrefab: {fileID: 8897178856660468665, guid: 74e4bdcd42eb32f469f7ed230a1bc645, type: 3}
+  musicReader: {fileID: 7430096033999533622, guid: a783bb639491f4c4195d86126c2eaa2a, type: 3}
+  imageReader: {fileID: 8515604937999596245, guid: 67c2a57be94d4b34d8662202c56b9d02, type: 3}
 --- !u!1 &8054151701869803791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2472,7 +2472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a693ee4eb33587499518607b59c02f0, type: 3}
   typeOfFile: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 4b52b69df759d2743b0cfc5cfcdb2b09, type: 3}
   sprite: {fileID: 0}
 --- !u!1 &8897178856660468665
 GameObject:
@@ -2847,5 +2847,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a693ee4eb33587499518607b59c02f0, type: 3}
   typeOfFile: 2
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 5822befe6e10743469ba2a79dec7859e, type: 3}
   sprite: {fileID: 0}
