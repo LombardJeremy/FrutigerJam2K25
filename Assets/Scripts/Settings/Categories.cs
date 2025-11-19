@@ -29,6 +29,8 @@ public class Categories : MonoBehaviour
     [SerializeField] string textFxActivated;
     [SerializeField] string textFxDeactivated;
     [SerializeField] Material backgroundMaterial;
+    [SerializeField] Carousel carouselColorDownBackgrounds;
+    [SerializeField] Carousel carouselColorUpBackgrounds;
 
     Color backgroundColorDownStart;
     Color backgroundColorUpStart;
@@ -85,18 +87,6 @@ public class Categories : MonoBehaviour
 
     private void BackgroundInput()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            fxActivated = !fxActivated;
-
-            if (fxActivated) textButtonFxBackground.text = textFxActivated;
-            else textButtonFxBackground.text = textFxDeactivated;
-
-            fxBackground.SetActive(fxActivated);
-        }
-        
-        /*
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             int index = carouselBackground.GetSelectedIndex();
@@ -115,7 +105,47 @@ public class Categories : MonoBehaviour
             //if (diff != 0)
             //    audioSource.Play();
         }
-        */
+        
+        switch(carouselBackground.GetSelectedIndex())
+        {
+            case 0:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    fxActivated = !fxActivated;
+
+                    if (fxActivated) textButtonFxBackground.text = textFxActivated;
+                    else textButtonFxBackground.text = textFxDeactivated;
+
+                    fxBackground.SetActive(fxActivated);
+                }
+                break;
+            case 1:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Color color = carouselColorDownBackgrounds.GetChildParents().GetChild(carouselColorDownBackgrounds.GetSelectedIndex()).GetComponent<Image>().color;
+                    backgroundMaterial.SetColor("_ColorDown", color);
+                    //Change color
+                }
+
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                    carouselColorDownBackgrounds.Right();
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    carouselColorDownBackgrounds.Left();
+                break;
+            case 2:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Color color = carouselColorUpBackgrounds.GetChildParents().GetChild(carouselColorUpBackgrounds.GetSelectedIndex()).GetComponent<Image>().color;
+                    backgroundMaterial.SetColor("_ColorUp", color);
+                    //Change color
+                }
+
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                    carouselColorUpBackgrounds.Right();
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    carouselColorUpBackgrounds.Left();
+                break;
+        }
 
 
     }

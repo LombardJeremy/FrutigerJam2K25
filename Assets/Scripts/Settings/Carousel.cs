@@ -272,4 +272,6 @@ public class Carousel : MonoBehaviour
 
         }
     }
+
+	public Transform GetChildParents() => childsParent;
 }
