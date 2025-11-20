@@ -31,9 +31,17 @@ public class Categories : MonoBehaviour
     [SerializeField] Material backgroundMaterial;
     [SerializeField] Carousel carouselColorDownBackgrounds;
     [SerializeField] Carousel carouselColorUpBackgrounds;
+    [SerializeField] ParticleSystem backgroundParticleSystem;
+    [SerializeField] Carousel carouselColorFX1;
+    [SerializeField] Carousel carouselColorFX2;
+
+    [SerializeField] Material spriteMaterial;
+    [SerializeField] Carousel carouselColorSprites;
 
     Color backgroundColorDownStart;
     Color backgroundColorUpStart;
+
+    Color spriteColorStart;
 
 
     bool loadingOS = false;
@@ -62,9 +70,8 @@ public class Categories : MonoBehaviour
 
         backgroundColorDownStart = backgroundMaterial.GetColor("_ColorDown");
         backgroundColorUpStart = backgroundMaterial.GetColor("_ColorUp");
-        
-        //backgroundMaterial.SetColor("_ColorDown", Color.blue);
-        //backgroundMaterial.SetColor("_ColorUp", Color.red);
+
+        spriteColorStart = spriteMaterial.GetColor("_Color");
     }
 
     void Update()
@@ -144,6 +151,57 @@ public class Categories : MonoBehaviour
                     carouselColorUpBackgrounds.Right();
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
                     carouselColorUpBackgrounds.Left();
+                break;
+            case 3:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Color color = carouselColorFX1.GetChildParents().GetChild(carouselColorFX1.GetSelectedIndex()).GetComponent<Image>().color;
+                    ParticleSystem.MainModule main = backgroundParticleSystem.main;
+                    ParticleSystem.MinMaxGradient gradient = main.startColor;
+                    gradient.colorMax = gradient.colorMax;
+                    gradient.colorMin = color;
+
+                    main.startColor = gradient;
+
+                    //Change color
+                }
+
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                    carouselColorFX1.Right();
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    carouselColorFX1.Left();
+                break;
+            case 4:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Color color = carouselColorFX2.GetChildParents().GetChild(carouselColorFX2.GetSelectedIndex()).GetComponent<Image>().color;
+                    ParticleSystem.MainModule main = backgroundParticleSystem.main;
+                    ParticleSystem.MinMaxGradient gradient = main.startColor;
+                    gradient.colorMax = color;
+                    gradient.colorMin = gradient.colorMin;
+
+                    main.startColor = gradient;
+
+                    //Change color
+                }
+
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                    carouselColorFX2.Right();
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    carouselColorFX2.Left();
+                break;
+            case 5:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Color color = carouselColorSprites.GetChildParents().GetChild(carouselColorSprites.GetSelectedIndex()).GetComponent<Image>().color;
+                    spriteMaterial.SetColor("_Color", color);
+                    //Change color
+                }
+
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                    carouselColorSprites.Right();
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    carouselColorSprites.Left();
                 break;
         }
 
@@ -275,5 +333,6 @@ public class Categories : MonoBehaviour
         print("Change background to normal");
         backgroundMaterial.SetColor("_ColorDown", backgroundColorDownStart);
         backgroundMaterial.SetColor("_ColorUp", backgroundColorUpStart);
+        spriteMaterial.SetColor("_Color", spriteColorStart);
     }
 }
