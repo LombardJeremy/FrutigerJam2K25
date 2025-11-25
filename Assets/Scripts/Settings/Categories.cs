@@ -317,10 +317,12 @@ public class Categories : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             soundSlider.value += 0.1f;
+            PlaySelectSound();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             soundSlider.value -= 0.1f;
+            PlaySelectSound();
         }
     }
 
