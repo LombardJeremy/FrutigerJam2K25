@@ -4,6 +4,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class Categories : MonoBehaviour
@@ -18,6 +19,8 @@ public class Categories : MonoBehaviour
     [Header("SOUNDS")]
     public AudioSource audioSource;
     public AudioClip success;
+    public AudioClip carousel;
+    public AudioClip select;
 
     public MainSceneManager mainSceneManager;
 
@@ -92,6 +95,20 @@ public class Categories : MonoBehaviour
         }
     }
 
+    private void PlayCarouselSound()
+    {
+        audioSource.Stop();
+        audioSource.clip = carousel;
+        audioSource.Play();
+    }
+
+    private void PlaySelectSound()
+    {
+        audioSource.Stop();
+        audioSource.clip = select;
+        audioSource.Play();
+    }
+
     private void BackgroundInput()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -100,8 +117,8 @@ public class Categories : MonoBehaviour
             carouselBackground.Right();
             int diff = carouselBackground.GetSelectedIndex() - index;
 
-            //if (diff != 0)
-            //    audioSource.Play();
+            if (diff != 0)
+                PlayCarouselSound();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -109,8 +126,8 @@ public class Categories : MonoBehaviour
             carouselBackground.Left();
             int diff = carouselBackground.GetSelectedIndex() - index;
 
-            //if (diff != 0)
-            //    audioSource.Play();
+            if (diff != 0)
+                PlayCarouselSound();
         }
         
         switch(carouselBackground.GetSelectedIndex())
@@ -124,6 +141,7 @@ public class Categories : MonoBehaviour
                     else textButtonFxBackground.text = textFxDeactivated;
 
                     fxBackground.SetActive(fxActivated);
+                    PlaySelectSound();
                 }
                 break;
             case 1:
@@ -131,26 +149,39 @@ public class Categories : MonoBehaviour
                 {
                     Color color = carouselColorDownBackgrounds.GetChildParents().GetChild(carouselColorDownBackgrounds.GetSelectedIndex()).GetComponent<Image>().color;
                     backgroundMaterial.SetColor("_ColorDown", color);
+                    PlaySelectSound();
                     //Change color
                 }
-
                 if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
                     carouselColorDownBackgrounds.Right();
+                    PlayCarouselSound();
+                }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    PlayCarouselSound();
                     carouselColorDownBackgrounds.Left();
+                }
                 break;
             case 2:
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     Color color = carouselColorUpBackgrounds.GetChildParents().GetChild(carouselColorUpBackgrounds.GetSelectedIndex()).GetComponent<Image>().color;
                     backgroundMaterial.SetColor("_ColorUp", color);
+                    PlaySelectSound();
                     //Change color
                 }
 
                 if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
                     carouselColorUpBackgrounds.Right();
+                    PlayCarouselSound();
+                }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    PlayCarouselSound();
                     carouselColorUpBackgrounds.Left();
+                }
                 break;
             case 3:
                 if (Input.GetKeyDown(KeyCode.Return))
@@ -162,14 +193,20 @@ public class Categories : MonoBehaviour
                     gradient.colorMin = color;
 
                     main.startColor = gradient;
-
+                    PlaySelectSound();
                     //Change color
                 }
 
                 if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
                     carouselColorFX1.Right();
+                    PlayCarouselSound();
+                }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    PlayCarouselSound();
                     carouselColorFX1.Left();
+                }
                 break;
             case 4:
                 if (Input.GetKeyDown(KeyCode.Return))
@@ -181,27 +218,42 @@ public class Categories : MonoBehaviour
                     gradient.colorMin = gradient.colorMin;
 
                     main.startColor = gradient;
+                    PlaySelectSound();
 
                     //Change color
                 }
 
                 if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    PlayCarouselSound();
                     carouselColorFX2.Right();
+                }
+                
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    PlayCarouselSound();
                     carouselColorFX2.Left();
+                }
                 break;
             case 5:
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     Color color = carouselColorSprites.GetChildParents().GetChild(carouselColorSprites.GetSelectedIndex()).GetComponent<Image>().color;
                     spriteMaterial.SetColor("_Color", color);
+                    PlaySelectSound();
                     //Change color
                 }
 
                 if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    PlayCarouselSound();
                     carouselColorSprites.Right();
+                }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    PlayCarouselSound();
                     carouselColorSprites.Left();
+                }
                 break;
         }
 
@@ -213,6 +265,7 @@ public class Categories : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && !loadingOS)
         {
             StartCoroutine(UpdateOSCoroutine());
+            PlaySelectSound();
         }
     }
 
@@ -295,6 +348,7 @@ public class Categories : MonoBehaviour
             }
 
             TaskBarManager.instance.SetDate(childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[1].text + "/" + childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[3].text + "/" + childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[5].text);
+            PlaySelectSound();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -312,6 +366,7 @@ public class Categories : MonoBehaviour
             }
 
             TaskBarManager.instance.SetDate(childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[1].text + "/" + childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[3].text + "/" + childs.GetChild(sec).GetComponentsInChildren<TextMeshProUGUI>()[5].text);
+            PlaySelectSound();
         }
     }
 

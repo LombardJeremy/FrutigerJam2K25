@@ -13485,6 +13485,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8273384205051639729, guid: b65ec00712393a84d905c30333b0e887, type: 3}
+      propertyPath: select
+      value: 
+      objectReference: {fileID: 8300000, guid: 6523d79dee25edd4199b03172f362f65, type: 3}
+    - target: {fileID: 8273384205051639729, guid: b65ec00712393a84d905c30333b0e887, type: 3}
+      propertyPath: carousel
+      value: 
+      objectReference: {fileID: 8300000, guid: 290fad470a8aa9f42ae317386daa53b6, type: 3}
+    - target: {fileID: 8273384205051639729, guid: b65ec00712393a84d905c30333b0e887, type: 3}
       propertyPath: fxBackground
       value: 
       objectReference: {fileID: 1122677770}
