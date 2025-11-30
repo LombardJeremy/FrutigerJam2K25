@@ -24,7 +24,7 @@ public class WindowController : MonoBehaviour
     {
         _data = GetComponentInParent<WindowData>();
         numElements = transform.childCount;
-        transform.GetChild(indexHorizontal + indexVertical).GetComponent<Image>().color = Color.red;
+        transform.GetChild(indexHorizontal + indexVertical).GetComponent<Image>().color = Color.gray;
     }
 
     void Update()
