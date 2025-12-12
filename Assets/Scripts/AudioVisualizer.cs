@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
  
@@ -17,6 +18,8 @@ public class AudioVisualizer : MonoBehaviour
  
     [Header("State")]
     public float[] spectrumData;
+
+    [Header("UI")] public TextMeshProUGUI text;
  
     public void Initialize()
     {
@@ -24,6 +27,7 @@ public class AudioVisualizer : MonoBehaviour
         spectrumData = new float[4096];
         audioSource = AudioManager.Instance._mainAudioSource;
         AudioManager.Instance.PlayMusic(GetComponentInParent<WindowData>().clip);
+        text.text = AudioManager.Instance._mainAudioSource.clip.name;
     }
 
     public void PlayMusic()
