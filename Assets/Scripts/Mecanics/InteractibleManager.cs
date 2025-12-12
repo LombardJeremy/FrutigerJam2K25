@@ -13,7 +13,7 @@ public class InteractibleManager : MonoBehaviour
     {
         foreach (Interactible interactible in  interactibles)
         {
-            if (IsInElement(interactible, position))
+            if (IsInElement(interactible, position) && interactible.active)
             {
                 interactible.OnInteraction();
                 audioSource.Stop();

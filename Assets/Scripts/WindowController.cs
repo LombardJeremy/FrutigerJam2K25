@@ -7,6 +7,9 @@ public class WindowController : MonoBehaviour
     [SerializeField] int horizontalElements = 1;
     [SerializeField] int verticalElements = 1;
 
+    [SerializeField] Color colorSelected;
+    [SerializeField] Color colorNotSelected;
+
     public GameObject windowExplorerMusicPrefab;
     public GameObject windowExplorerImagePrefab;
     public GameObject musicReader;
@@ -85,8 +88,8 @@ public class WindowController : MonoBehaviour
     {
         if (indexVertical != lastIndexVertical || indexHorizontal != lastIndexHorizontal)
         {
-            transform.GetChild(indexHorizontal + indexVertical * horizontalElements).GetComponent<Image>().color = Color.red;
-            transform.GetChild(lastIndexHorizontal + lastIndexVertical * horizontalElements).GetComponent<Image>().color = Color.gray;
+            transform.GetChild(indexHorizontal + indexVertical * horizontalElements).GetComponent<Image>().color = colorSelected;
+            transform.GetChild(lastIndexHorizontal + lastIndexVertical * horizontalElements).GetComponent<Image>().color = colorNotSelected;
         }
     }
 }

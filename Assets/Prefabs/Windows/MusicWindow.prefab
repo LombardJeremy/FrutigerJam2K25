@@ -2037,10 +2037,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.35
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -2075,7 +2075,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -18.077698, y: 0, z: -17.274094, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3465,6 +3465,8 @@ MonoBehaviour:
   _data: {fileID: 0}
   horizontalElements: 5
   verticalElements: 2
+  colorSelected: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
+  colorNotSelected: {r: 1, g: 1, b: 1, a: 1}
   windowExplorerMusicPrefab: {fileID: 8897178856660468665}
   windowExplorerImagePrefab: {fileID: 8897178856660468665, guid: 74e4bdcd42eb32f469f7ed230a1bc645, type: 3}
   musicReader: {fileID: 7430096033999533622, guid: a783bb639491f4c4195d86126c2eaa2a, type: 3}

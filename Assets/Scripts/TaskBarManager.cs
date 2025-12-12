@@ -56,6 +56,7 @@ public class TaskBarManager : MonoBehaviour
             _canvasGroup.interactable = true;
             GetComponent<RectTransform>().DOShakePosition( 2f, 20f, 40, 95f, true, true);
             GameManager.instance._taskBarUnlocked = true;
+            GetComponent<Interactible>().active = false;
         }
     }
 
