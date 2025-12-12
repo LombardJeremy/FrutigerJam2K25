@@ -4547,6 +4547,8 @@ MonoBehaviour:
   buttonUpdate: {fileID: 1381351223379084919}
   audioSource: {fileID: 7634666277808895442}
   success: {fileID: 8300000, guid: 57d381cc17d18c74091417252e33a246, type: 3}
+  carousel: {fileID: 0}
+  select: {fileID: 0}
   mainSceneManager: {fileID: 0}
   carouselBackground: {fileID: 2522783698630924667}
   fxBackground: {fileID: 0}
@@ -4557,6 +4559,11 @@ MonoBehaviour:
   backgroundMaterial: {fileID: 2100000, guid: 4070955ef7d4ca548a5fda3400da03c4, type: 2}
   carouselColorDownBackgrounds: {fileID: 3397167358474828442}
   carouselColorUpBackgrounds: {fileID: 7302044409887112529}
+  backgroundParticleSystem: {fileID: 0}
+  carouselColorFX1: {fileID: 0}
+  carouselColorFX2: {fileID: 0}
+  spriteMaterial: {fileID: 0}
+  carouselColorSprites: {fileID: 0}
   isInCategory: 0
 --- !u!82 &7634666277808895442
 AudioSource:
@@ -5837,6 +5844,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2940239832788873931, guid: 24900790ccfd6744a9f60f772bc3cc5f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: dbd5728fdbb925b45b71d9ea07b27184, type: 2}
     - target: {fileID: 4935467341365599653, guid: 24900790ccfd6744a9f60f772bc3cc5f, type: 3}
       propertyPath: m_Name
       value: Popup
@@ -6061,6 +6072,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2940239832788873931, guid: 24900790ccfd6744a9f60f772bc3cc5f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: dbd5728fdbb925b45b71d9ea07b27184, type: 2}
     - target: {fileID: 4935467341365599653, guid: 24900790ccfd6744a9f60f772bc3cc5f, type: 3}
       propertyPath: m_Name
       value: Popup
