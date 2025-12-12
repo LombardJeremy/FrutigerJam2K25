@@ -19,6 +19,7 @@ public class TaskBarIconBehaviour : MonoBehaviour
         if (iconSprite != null)
         {
             GetComponent<Image>().sprite = iconSprite;
+            GetComponent<RectTransform>().sizeDelta = new Vector2(75, 75);
         }
     }
 }
