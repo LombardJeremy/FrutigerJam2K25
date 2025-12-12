@@ -27,7 +27,6 @@ public class AudioVisualizer : MonoBehaviour
         spectrumData = new float[4096];
         audioSource = AudioManager.Instance._mainAudioSource;
         AudioManager.Instance.PlayMusic(GetComponentInParent<WindowData>().clip);
-        text.text = AudioManager.Instance._mainAudioSource.clip.name;
     }
 
     public void PlayMusic()
@@ -74,6 +73,7 @@ public class AudioVisualizer : MonoBehaviour
             }
             bars[i].localScale = scale;
         }
+        text.text = AudioManager.Instance._mainAudioSource.clip.name;
     }
 }
  
